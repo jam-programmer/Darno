@@ -1,0 +1,83 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.User.IndexModel
+@{
+}
+
+@section Script {
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/user/index.js"></script>
+}
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "User",
+            actionName = "Index",
+            title = "کاربران",
+            IsActive = true
+        }
+
+    };
+}
+<div class="row">
+    <navigation routes="@routes"></navigation>
+
+
+</div>
+
+
+<basic-table table-title="لیست کاربران"
+             button-title="ایجاد کاربر"
+             button-link="/Admin/User/Create"
+             area="Admin"
+             page="User"
+             action="Index"
+             search-value="@ViewData["Search"]"
+             total-pages="@Model.PageModel.TotalPage"
+             current-page="@Model.PageModel.CurrentPage">
+
+    <!-- محتوای جدول اینجا قرار می‌گیرد -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>نام و نام خانوادگی</th>
+                <th>نام کاربری</th>
+                <th>پست الکترونیک</th>
+                <th>شماره موبایل</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PageModel!.List!)
+            {
+                <tr id="item_@item.Id">
+                    <td>@item.FullName</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>
+                        <a onclick="SetPassword('@item.Id')" class="btn btn-sm btn-primary text-white">
+                            تنظیم گذر واژه
+                        </a>
+                        <a asp-area="Admin" asp-page="/User/Edit" asp-route-id="@item.Id"
+                           class="btn btn-sm btn-warning">
+                            ویرایش
+                        </a>
+                        <a onclick="Delete('@item.Id')" class="btn btn-sm btn-danger text-white">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</basic-table> 

@@ -1,0 +1,68 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Role.EditModel
+@{
+}
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Role",
+            actionName = "Index",
+            title = "نقش های کاربری",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Role",
+            actionName = "Edit",
+            title = "ویرایش نقش",
+            IsActive = false
+        }
+
+    };
+}
+
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <form asp-page="Edit" method="post" class="col-xl-4 col-lg-4 col-md-12 col-sm offset-xl-4 offset-lg-4 card">
+        <div class="card-header">
+            <h4>ویرایش نقش </h4>
+            @if (ViewData["Alert"] is not null)
+            {
+                <div class="alert alert-warning">@ViewData["Alert"]</div>
+            }
+        </div>
+        <div class="card-body">
+            <div>
+                <label class="form-label">نام انگلیسی</label>
+                <input type="text" asp-for="Role.Name" class="form-control" />
+                <span class="text-danger" asp-validation-for="Role.Name"></span>
+            </div>
+            <div>
+                <label class="form-label">نام فارسی</label>
+                <input type="text" asp-for="Role.PersianName" class="form-control" />
+                <span class="text-danger" asp-validation-for="Role.PersianName"></span>
+            </div>
+            <input type="hidden" asp-for="Role.Id"/>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-success text-white" type="submit">ثبت</button>
+            <a asp-page="/Role/Index" class="btn btn-sm btn-warning text-white">بازگشت</a>
+        </div>
+    </form>
+
+</div>
+@section Script {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
