@@ -1,5 +1,6 @@
 ﻿using Application.Contract;
 using Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -34,5 +35,14 @@ public class Context : IContext
     public IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class
     {
         return _sqlServerContext.Set<TEntity>().AsQueryable();
+    } 
+    public DbSet<TEntity> Entity<TEntity>() where TEntity : class
+    {
+        return _sqlServerContext.Set<TEntity>();
+    }
+
+    public async Task SaveChangesAsync()
+    {
+      await  _sqlServerContext.SaveChangesAsync();
     }
 }

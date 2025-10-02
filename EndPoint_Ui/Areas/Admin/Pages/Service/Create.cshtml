@@ -1,0 +1,96 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Service.CreateModel
+
+
+
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Service",
+            actionName = "Index",
+            title = "خدمات",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Service",
+            actionName = "Create",
+            title = "ایجاد خدمت",
+            IsActive = false
+        }
+
+    };
+}
+
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <form asp-page="Create" method="post" enctype="multipart/form-data"
+          class="col-xl-8 col-lg-8 col-md-12 col-sm offset-xl-2 offset-lg-2 card">
+        <div class="card-header">
+            <h4>ایجاد خدمت جدید</h4>
+            @if (ViewData["Alert"] is not null)
+            {
+                <div class="alert alert-warning">@ViewData["Alert"]</div>
+            }
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+                </div>
+                <div class="col-3">
+                    <label class="form-label">تصویر</label>
+                    <input asp-for="ServiceDto.ImageFile"
+                           onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                    <span class="text-danger" asp-validation-for="ServiceDto.ImageFile"></span>
+                </div>
+            </div>
+            <div>
+                <label class="form-label">عنوان</label>
+                <input type="text" asp-for="ServiceDto.Title" class="form-control" />
+                <span class="text-danger" asp-validation-for="ServiceDto.Title"></span>
+            </div>
+
+            <div>
+                <label class="form-label">توضیح کوتاه</label>
+                <textarea rows="4" asp-for="ServiceDto.ShortDescription" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="ServiceDto.ShortDescription"></span>
+            </div>
+
+              <div>
+                <label class="form-label">توضیحات</label>
+                <textarea rows="6" asp-for="ServiceDto.Description" id="Description" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="ServiceDto.Description"></span>
+            </div>
+
+
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-success text-white" type="submit">ثبت</button>
+            <a asp-page="/Service/Index" class="btn btn-sm btn-warning text-white">بازگشت</a>
+        </div>
+    </form>
+
+</div>
+
+@section Script {
+
+    <script src="~/assets/ckeditor/ckeditor.js"></script>
+    <script src="~/assets/js/service/create.js"></script>
+    <script src="~/assets/js/upload.js"></script>
+
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

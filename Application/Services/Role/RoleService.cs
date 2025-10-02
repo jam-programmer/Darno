@@ -38,7 +38,7 @@ public class RoleService : IRoleService
         {
             query = query.Where(w => w.PersianName!.Contains(pagination!.keyword));
         }
-        int count = query.Count().PageCount(pagination!.pageSize); ;
+        int count = query.Count().PageCount(pagination!.pageSize); 
         int total = query.Count();
 
         model = await query.MappingedAsync<RoleEntity, RoleViewModel>
