@@ -46,15 +46,42 @@
     <ul class="menu-inner py-1">
         <!-- Page -->
         <li class="menu-item">
-            <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Page 1">صفحه 1</div>
+            <a asp-page="/Role/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-medal"></i>
+                <div >مدیریت نقش</div>
             </a>
         </li>
-        <li class="menu-item active">
-            <a href="page-2.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Page 2">صفحه 2</div>
+        <li class="menu-item">
+            <a asp-page="/User/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-user"></i>
+                <div > مدیریت کاربران</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-page="/Service/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-hammer"></i>
+                <div > خدمات</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a asp-page="/Project/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-diagram-project"></i>
+                <div >  پروژه ها</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a asp-page="/Member/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-people-group"></i>
+                <div > تیم ما</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-page="/Question/Index" class="menu-link">
+            
+                <i class="menu-icon fa-solid fa-clipboard-question"></i>
+                <div > سوالات متداول</div>
             </a>
         </li>
     </ul>

@@ -68,6 +68,11 @@
                     <td>@item.Owner</td>
                     <td>
 
+                        <a asp-area="Admin" asp-page="/ProjectPicture/Index" asp-route-projectId="@item.Id"
+                           class="btn btn-sm btn-info">
+                            تصاویر پروژه
+                        </a>
+                        
                         <a asp-area="Admin" asp-page="/Project/Edit" asp-route-id="@item.Id"
                            class="btn btn-sm btn-warning">
                             ویرایش

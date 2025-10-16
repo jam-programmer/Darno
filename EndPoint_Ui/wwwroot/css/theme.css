@@ -276,10 +276,11 @@ video {
 }:is(:where(.dark) *){
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}h1,h2,h3,h4,h5,h6{
-  font-family: "MyWebFont";
-  --tw-text-opacity: 1;
-  color: rgb(24 24 27 / var(--tw-text-opacity));
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "MyWebFont";
+    --tw-text-opacity: 1;
+    color: #173657;
 }:is(:where(.dark) h1),:is(:where(.dark) h2),:is(:where(.dark) h3),:is(:where(.dark) h4),:is(:where(.dark) h5),:is(:where(.dark) h6){
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -500,18 +501,19 @@ video {
   transition-duration: 500ms;
   --tw-content: "";
   content: var(--tw-content);
-}.btn::after{
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: -20;
-  height: 100%;
-  width: 100%;
-  border-radius: 30px;
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
-}.btn:hover{
+}
+    .btn::after {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -20;
+        height: 100%;
+        width: 100%;
+        border-radius: 30px;
+        content: var(--tw-content);
+        --tw-bg-opacity: 1;
+        background-color: #173657;
+    }.btn:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }.btn:hover::before{
@@ -4762,3 +4764,11 @@ span{
   }
 }
 /*# sourceMappingURL=maps/theme.css.map */
+
+.dark-blue {
+    color: #173657 !important;
+}
+.bg-dark-blue {
+    background-color: #173657 !important;
+    color:white !important;
+}

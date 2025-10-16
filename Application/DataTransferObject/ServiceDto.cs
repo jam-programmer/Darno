@@ -13,6 +13,12 @@ public sealed record ServiceDto : IValidatableObject
     public Guid Id { get; set; }
     public IFormFile? ImageFile { set; get; }
     public string? ImagePath { get; set; }
+
+
+
+    [Required(ErrorMessage = "نام یکتا الزامی است")]
+    public string? UniqueName { get; set; }
+
     [Required(ErrorMessage = "عنوان الزامی است")]
     public string? Title { get; set; }
     [Required(ErrorMessage = "توضیحات الزامی است")]

@@ -47,6 +47,19 @@ public class ServiceService : IServiceService
         return service.Adapt<ServiceDto>();
     }
 
+    public async Task<ServiceDetailViewModel> GetServiceDetailByUniqueNameAsync(string UniqueName)
+    {
+        ServiceEntity? service =
+         await _context.Entity<ServiceEntity>()
+         .FirstOrDefaultAsync(f=>f.UniqueName==UniqueName);
+
+        if (service == null)
+        {
+            throw new InternalException(CustomMessage.NotFoundOnDb);
+        }
+        return service.Adapt<ServiceDetailViewModel>();
+    }
+
     public async Task<PaginatedList<ServiceViewModel>> GetServicesAsync(Pagination pagination)
     {
         IQueryable<ServiceEntity> query = _context.GetQueryable<ServiceEntity>();
@@ -70,7 +83,7 @@ public class ServiceService : IServiceService
         IQueryable<ServiceEntity> query = _context.GetQueryable<ServiceEntity>();
         return await query.Select(s => new ServiceViewModel()
         {
-
+            UniqueName=s.UniqueName,
             Id = s.Id,
             Title = s.Title,
             ImagePath = s.ImagePath,

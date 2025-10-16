@@ -16,4 +16,6 @@ public interface IProjectService
     Task<ProjectDto> GetProjectByIdAsync(Guid ProjectId);
     Task DeleteProjectAsync(Guid ProjectId);
     Task<PaginatedList<ProjectViewModel>> GetProjectsAsync(Pagination pagination);
+    Task<IReadOnlyList<ProjectCardViewModel>>
+        GetProjectsWithServiceIdAsync(Guid ServiceId);
 }

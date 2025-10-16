@@ -156,7 +156,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("JobTitle")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Linkdin")
+                    b.Property<string>("Linkedin")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -302,7 +302,14 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UniqueName")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UniqueName")
+                        .IsUnique()
+                        .HasFilter("[UniqueName] IS NOT NULL");
 
                     b.ToTable("Service", (string)null);
                 });

@@ -64,6 +64,19 @@ public class ProjectService : IProjectService
         return model;
     }
 
+    public async Task<IReadOnlyList<ProjectCardViewModel>> GetProjectsWithServiceIdAsync(Guid ServiceId)
+    {
+        return await _context.Entity<ProjectEntity>()
+            .Where(w=>w.ServiceId == ServiceId)
+            .Select(s=>new ProjectCardViewModel()
+            {
+                Id = s.Id,
+                ImagePath = s.ImagePath,
+                Owner = s.Owner,
+                Title=s.Title,
+            }).ToListAsync();
+    }
+
     public async Task InsertProjectAsync(ProjectDto project)
     {
         ProjectEntity entity = project.Adapt<ProjectEntity>(); 

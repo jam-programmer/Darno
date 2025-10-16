@@ -1,4 +1,5 @@
 ﻿using Application.Common.Messages;
+using Application.Contract;
 using Domain.Entities.Identity;
 using Infrastructure.Context;
 using Microsoft.AspNetCore.Identity;
@@ -67,7 +68,6 @@ public static class Cofiguration
             cooke.SlidingExpiration = true;
         });
         #endregion
-
 
         return service;
     }

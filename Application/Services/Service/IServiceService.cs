@@ -13,4 +13,5 @@ public interface IServiceService
     Task<PaginatedList<ServiceViewModel>> GetServicesAsync(Pagination pagination);
     Task<IReadOnlyDictionary<Guid, string>> GetServicesWithOutPaginationAsync();
     Task<IReadOnlyList<ServiceViewModel>> GetServicesForHomePageAsync();
+    Task<ServiceDetailViewModel> GetServiceDetailByUniqueNameAsync(string UniqueName);
 }

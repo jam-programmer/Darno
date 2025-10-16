@@ -1,0 +1,72 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Question.EditModel
+
+
+
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Question",
+            actionName = "Index",
+            title = "سوالات متداول",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Question",
+            actionName = "Edit",
+            title = "ویرایش سوال",
+            IsActive = false
+        }
+
+    };
+}
+
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <form asp-page="Edit" method="post" class="col-xl-4 col-lg-4 col-md-12 col-sm offset-xl-4 offset-lg-4 card">
+        <div class="card-header">
+            <h4>ویرایش سوال </h4>
+            @if(ViewData["Alert"] is not null)
+            {
+                <div class="alert alert-warning">@ViewData["Alert"]</div>
+            }
+        </div>
+        <div class="card-body">
+            <div>
+                <label class="form-label">سوال</label>
+                <input type="text" asp-for="Question.Title" class="form-control" />
+                <span class="text-danger" asp-validation-for="Question.Title"></span>
+            </div>
+            <div>
+                <label class="form-label">پاسخ</label>
+                <textarea asp-for="Question.Description" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="Question.Description"></span>
+            </div>
+            <input type="hidden" asp-for="Question.Id"/>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-success text-white" type="submit">ثبت</button>
+            <a asp-page="/Question/Index" class="btn btn-sm btn-warning text-white">بازگشت</a>
+        </div>
+
+    </form>
+
+</div>
+@section Script {
+    <partial name="_ValidationScriptsPartial.cshtml" />
+
+
+}

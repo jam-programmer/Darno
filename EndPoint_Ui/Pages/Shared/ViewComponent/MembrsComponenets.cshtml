@@ -1,0 +1,69 @@
+﻿@using Application.ViewModels
+@model IReadOnlyList<MemberForMainPageViewModel>
+<section dir="rtl" class="bg-white dark:bg-dark-300 pb-[170px] pt-150 max-md:pb-25 max-md:pt-20 max-md:overflow-hidden">
+    <div class="container">
+        <div class="mb-12 text-center max-w-[475px] mx-auto relative z-10">
+            <p class="section-tagline"> تیم ما </p>
+
+            <h2> تیم پیشرو، قوی و خلاق ما </h2>
+        </div>
+
+        <div class="relative z-10">
+            <div class="absolute left-1/2 max-md:top-0 md:top-1/2 -translate-x-1/2 -translate-y-1/2 flex max-md:flex-col -z-10 max-md:hidden">
+                <div class="max-1xl:w-[335px] max-1xl:h-[335px]  1xl:w-[442px] 1xl:h-[442px]  rounded-full bg-primary-200/20 blur-[145px]"></div>
+                <div class="max-1xl:w-[335px] max-1xl:h-[335px]  1xl:w-[442px] 1xl:h-[442px]  rounded-full bg-primary-200/25 -ml-[170px] max-md:ml-0 blur-[145px]"></div>
+                <div class="max-1xl:w-[335px] max-1xl:h-[335px]  1xl:w-[442px] 1xl:h-[442px]  rounded-full bg-primary-200/20 -ml-[170px] max-md:ml-0 blur-[145px]"></div>
+            </div>
+            <div class="absolute left-1/2 -top-[550px] p-[350px] -translate-x-1/2 bg-contain w-full h-full  bg-[url('../images/hero-gradient.png')] bg-no-repeat bg-center opacity-70 md:hidden -z-10"></div>
+            <div class="grid grid-cols-3 max-md:grid-cols-1 gap-8">
+                @if(Model!=null && Model.Any())
+                {
+                    @foreach(var member in Model)
+                    {
+                        <div class="group/image">
+                            <div class="bg-white dark:bg-dark-200 rounded-medium p-2.5 mb-6">
+                                <div class=" rounded bg-gray-100 dark:bg-[#30302F] overflow-hidden">
+                                    <img src="~/gallery/Member/@member.ImagePath" alt="team member image" class="grayscale group-hover/image:grayscale-0 duration-300 transition-all">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="team-single.html"><h3 class="mb-2"> @member.FullName </h3></a>
+                                <p class="text-sm font-medium leading-[1.5] mb-6">  @member.JobTitle  </p>
+                                <ul class="flex items-center gap-x-2.5 justify-center">
+                                    <li>
+                                        <a href=" @member.Linkedin " class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                            <img src="~/gallery/linkedin-svgrepo-com.svg" width="30" height="30" />
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@member.Instagram  " class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                            <img src="~/gallery/instagram-svgrepo-com.svg" width="30" height="30"/>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@member.Email" class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                            <img src="~/gallery/email-svgrepo-com.svg" width="30" height="30" />
+
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@member.GitHub" class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                            <img src="~/gallery/github-svgrepo-com.svg" width="30" height="30" />
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                }
+              
+
+          
+            </div>
+        </div>
+    </div>
+</section>

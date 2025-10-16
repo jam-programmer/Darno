@@ -1,0 +1,74 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Question.IndexModel
+
+@section Script {
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/question/index.js"></script>
+}
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Question",
+            actionName = "Index",
+            title = "سوالات متداول",
+            IsActive = true
+        }
+
+    };
+}
+<div class="row">
+    <navigation routes="@routes"></navigation>
+
+
+</div>
+
+
+<basic-table table-title="لیست سوالات متداول"
+             button-title="ایجاد سوال"
+             button-link="/Admin/Question/Create"
+             area="Admin"
+             page="Question"
+             action="Index"
+             search-value="@ViewData["Search"]"
+             total-pages="@Model.PageModel.TotalPage"
+             current-page="@Model.PageModel.CurrentPage">
+
+    <!-- محتوای جدول اینجا قرار می‌گیرد -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>عنوان سوال</th>
+              
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PageModel!.List!)
+            {
+                <tr id="item_@item.Id">
+                    <td>@item.Title</td>
+                   
+                    <td>
+                        <a asp-area="Admin" asp-page="/Question/Edit" asp-route-id="@item.Id"
+                           class="btn btn-sm btn-warning">
+                            ویرایش
+                        </a>
+                        <a onclick="Delete('@item.Id')" class="btn btn-sm btn-danger text-white">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</basic-table>

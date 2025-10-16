@@ -1,0 +1,88 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.ProjectPicture.IndexModel
+
+@section Script {
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/projectpicture/index.js"></script>
+
+}
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Project",
+            actionName = "Index",
+            title = "پروژه ها",
+            IsActive = false
+        }
+        ,
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "ProjectPicture",
+            actionName = "Index",
+            title = "تصاویر پروژه",
+            IsActive = true
+        }
+    };
+}
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="heading-color">
+                تصاویر پروژه
+            </h5>
+            <a asp-area="Admin" asp-page="/ProjectPicture/Create" asp-route-projectId="@ViewData["ProjectId"]"
+               class="btn btn-sm btn-success text-white">ایجاد تصویر</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>تصویر</th>
+                            
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PageModel!)
+                        {
+                            <tr id="item_@item.Id">
+
+                                <td>
+                                    <img src="~/gallery/project/@item.ImagePath"
+                                         width="60" height="80"
+                                         class="img-fluid" />
+                                </td>
+                            
+                                <td>
+
+                              
+                                    <a onclick="Delete('@item.Id')" class="btn btn-sm btn-danger text-white">حذف</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+       
+    </div>
+
+</div>
+
+

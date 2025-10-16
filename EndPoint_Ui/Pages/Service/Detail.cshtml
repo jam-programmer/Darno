@@ -1,0 +1,16 @@
+﻿@page
+@model EndPoint_Ui.Pages.Service.DetailModel
+<section dir="rtl" class="hero  overflow-hidden relative max-lg:pt-150 pt-[240px] pb-[60px] z-40">
+    <div class="container">
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex max-md:flex-col -z-10 max-md:hidden">
+            <div class="max-1xl:w-[335px] max-1xl:h-[335px] 1xl:w-[442px] 1xl:h-[442px] rounded-full bg-primary-200/20 blur-[145px]"></div>
+            <div class="max-1xl:w-[335px] max-1xl:h-[335px] 1xl:w-[442px] 1xl:h-[442px] rounded-full bg-primary-200/25 -ml-[170px] max-md:ml-0 blur-[145px]"></div>
+            <div class="max-1xl:w-[335px] max-1xl:h-[335px] 1xl:w-[442px] 1xl:h-[442px] rounded-full bg-primary-200/20 -ml-[170px] max-md:ml-0 blur-[145px]"></div>
+        </div>
+        <div class="max-w-[948px] mx-auto text-center aos-init aos-animate" data-aos="fade-up" data-aos-offset="200" data-aos-duration="1000" data-aos-once="true">
+            
+            <h1 class="max-lg:mb-10 mb-10"> @Model.ServiceDetail.Title </h1>
+            <p class="max-lg:mb-10 mb-12 max-w-[700px] mx-auto"> @Html.Raw(Model.ServiceDetail.Description) </p>
+        </div>
+    </div>
+</section>
