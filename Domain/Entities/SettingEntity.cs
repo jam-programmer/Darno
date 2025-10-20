@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities;
 
-public class SettingEntity : BaseEntity, IDelete
+public class SettingEntity : BaseEntity
 {
     public string Address { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
@@ -12,5 +12,5 @@ public class SettingEntity : BaseEntity, IDelete
 
     public string? AboutUs { get; set; }
 
-    public bool IsDelete { get; set; } = false;
+ 
 }

@@ -1,0 +1,47 @@
+﻿@using Application.ViewModels
+@model IReadOnlyList<ProjectCardViewModel>
+
+@if(Model!=null && Model.Any())
+{
+    <section class="bg-white dark:bg-dark pt-150 pb-150 relative max-md:pb-20">
+        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 bg-[url('../images/service-bg.png')] bg-no-repeat bg-center opacity-70 w-full h-full bg-[length:600px_1800px] md:hidden"></div>
+        <div class="container relative">
+            <div class="text-center max-w-[550px] mx-auto mb-16">
+                <p class="section-tagline">پروژه های موفق</p>
+                <h2>نمونه کارهای مرتبط</h2>
+            </div>
+            <div class="relative z-10">
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex max-lg:flex-col -z-10 max-md:hidden">
+                    <div class="w-[350px] h-[350px] lg:w-[442px] lg:h-[442px] blur-[80px] lg:blur-[145px] rounded-full bg-primary-200/20"></div>
+                    <div class="w-[350px] h-[350px] lg:w-[442px] lg:h-[442px] blur-[80px] lg:blur-[145px] rounded-full bg-primary-200/25 lg:-ml-[170px]"></div>
+                    <div class="w-[350px] h-[350px] lg:w-[442px] lg:h-[442px] blur-[80px] lg:blur-[145px] rounded-full bg-primary-200/20 lg:-ml-[170px]"></div>
+                </div>
+
+                <div dir="rtl" class="grid grid-cols-3 max-md:grid-cols-1 max-lg:grid-cols-2 gap-8">
+                    @foreach (ProjectCardViewModel item in Model)
+                    {
+                        <article class="bg-white dark:bg-dark-200 rounded-medium p-2.5 shadow-nav scale-100 hover:scale-105 transition-transform duration-500 hover:transition-transform hover:duration-500">
+                            <div class="border border-dashed rounded border-gray-100 dark:border-borderColour-dark p-6 max-md:p-4">
+                                <img src="~/gallery/Project/@item.ImagePath" alt="image" class="mb-6 w-full rounded-md">
+                                <div>
+                                    <a href="blog-details.html" class="badge"> @item.ServiceTitle </a>
+                                    <a href="blog-details.html" class="block">
+                                        <h3 class="mb-3 font-semibold leading-[1.33]">
+                                           @item.Title
+                                        </h3>
+                                    </a>
+                                    <div class="flex gap-x-2 items-center mb-4">
+                                        <p>@item.Owner</p>
+                                       
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </article>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}

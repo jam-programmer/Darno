@@ -1,4 +1,10 @@
 ﻿@page "/contact"
+@section Script {
+    <script src="~/js/sweetalert.js"></script>
+    <script src="~/js/rest.js"></script>
+    <script src="~/js/contact.js"></script>
+
+}
 <section class="hero overflow-hidden relative max-lg:pt-150 pt-[240px] pb-[60px] z-40">
     <div class="container">
         <div class="max-w-[948px] mx-auto text-center aos-init aos-animate" data-aos="fade-up" data-aos-offset="200" data-aos-duration="1000" data-aos-once="true">
@@ -7,7 +13,7 @@
             </p>
             <h1 class="max-lg:mb-10 mb-10">با ما در ارتباط باشید</h1>
             <p class="max-lg:mb-10 mb-12 max-w-[590px] mx-auto">
-             از شنبه تا چهارشنبه از ساعت 10 صبح الی 16 عصر همراه شما هستیم
+                از شنبه تا چهارشنبه از ساعت 10 صبح الی 16 عصر همراه شما هستیم
             </p>
         </div>
     </div>
@@ -83,31 +89,63 @@
 
             <div dir="rtl" class="bg-white dark:bg-dark-200 rounded-medium p-2.5 shadow-nav">
                 <div class="bg-white dark:bg-dark-200 border border-dashed rounded border-gray-100 dark:border-borderColour-dark p-12 max-md:p-5">
-                    <form>
+                    <div>
                         <div class="grid grid-cols-12 max-md:gap-y-10 md:gap-x-12 md:gap-8">
                             <div class="max-md:col-span-full md:col-span-6">
-                                <label for="username" class="block text-sm font-medium text-paragraph dark:text-white mb-2">
+                                <label class="block text-sm font-medium text-paragraph dark:text-white mb-2">
                                     نام نام خانوادگی
+                                    <span class="text-red">*</span>
                                 </label>
-                                <input type="text" name="first-name" id="username" placeholder="نام نام خانوادگی" class="block w-full text-sm rounded-[48px] border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light dark:placeholder:text-paragraph-light outline-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all">
+
+                                <input type="text"
+                                       id="fullname"
+                                    placeholder="نام نام خانوادگی" class="block w-full text-sm rounded-[48px] border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light dark:placeholder:text-paragraph-light outline-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all">
+                            </div>
+
+                            <div class="max-md:col-span-full md:col-span-6">
+                                <label class="block text-sm font-medium text-paragraph dark:text-white mb-2">
+                                    شماره تماس
+                                    <span class="text-red">*</span>
+                                </label>
+                                <input type="tel" id="phoneNumber"
+                                       placeholder="  شماره تماس"
+                                       class="block w-full text-sm rounded-[48px] border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light dark:placeholder:text-paragraph-light outline-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all">
+                            </div>
+
+
+                            <div class="max-md:col-span-full md:col-span-6">
+                                <label class="block text-sm font-medium text-paragraph dark:text-white mb-2">
+                                    نام سازمان / شرکت
+                                </label>
+                                <input type="text" id="companyName"
+                                       placeholder="نام سازمان / شرکت"
+                                       class="block w-full text-sm rounded-[48px] border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light dark:placeholder:text-paragraph-light outline-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all">
                             </div>
                             <div class="max-md:col-span-full md:col-span-6">
-                                <label for="email" class="block text-sm font-medium text-paragraph dark:text-white mb-2">
-                                    ایمیل
+                                <label class="block text-sm font-medium text-paragraph dark:text-white mb-2">
+                                    جایگاه شغلی
                                 </label>
-                                <input type="email" name="first-name" id="email" placeholder="ایمیل" class="block w-full text-sm rounded-[48px] border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light outline-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all">
+                                <input type="text" id="position"
+                                       placeholder="  جایگاه شغلی"
+                                       class="block w-full text-sm rounded-[48px] border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light dark:placeholder:text-paragraph-light outline-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all">
                             </div>
+
+
                             <div class="col-span-full">
                                 <label for="message" class="block text-sm font-medium text-paragraph dark:text-white mb-2">
                                     پیام
+                                    <span class="text-red">*</span>
                                 </label>
-                                <textarea name="first-name" id="message" rows="10" class="block w-full text-sm rounded border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light outline-none resize-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all"></textarea>
+                                <textarea name="first-name"
+                                id="message" rows="10" class="block w-full text-sm rounded border border-borderColour dark:border-borderColour-dark py-2.5 px-5 text-paragraph-light placeholder:text-paragraph-light outline-none resize-none bg-white dark:bg-dark-200 focus:border-primary dark:focus:border-primary duration-300 transition-all"></textarea>
                             </div>
                             <div class="mx-auto col-span-full text-center">
-                                <button class="btn">ارتباط باما</button>
+                                <button type="button"
+                                    onclick="SendMessage()"
+                                    class="btn">ارسال پیام</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

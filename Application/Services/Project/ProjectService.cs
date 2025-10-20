@@ -68,8 +68,10 @@ public class ProjectService : IProjectService
     {
         return await _context.Entity<ProjectEntity>()
             .Where(w=>w.ServiceId == ServiceId)
+            .Include(i=>i.Service)
             .Select(s=>new ProjectCardViewModel()
             {
+                ServiceTitle=s.Service!.Title,
                 Id = s.Id,
                 ImagePath = s.ImagePath,
                 Owner = s.Owner,

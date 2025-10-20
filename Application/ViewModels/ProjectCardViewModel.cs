@@ -12,4 +12,5 @@ public sealed record ProjectCardViewModel
     public string? ImagePath { get; set; }
     public string? Title { get; set; }
     public string? Owner { get; set; }
+    public string? ServiceTitle { get; set; }
 }
