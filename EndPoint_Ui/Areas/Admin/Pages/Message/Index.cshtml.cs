@@ -1,29 +1,25 @@
 using Application.Common;
-using Application.Services.Question;
+using Application.Services.Message;
 using Application.ViewModels;
 using EndPoint_Ui.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-namespace EndPoint_Ui.Areas.Admin.Pages.Question;
 
+namespace EndPoint_Ui.Areas.Admin.Pages.Message;
 
-public class IndexModel : PageModel
+public class IndexModel (IMessageService messageService) : PageModel
 {
-    readonly IQuestionService _questionService;
-    public IndexModel(IQuestionService questionService)
-    {
-        _questionService    = questionService;
-    }
-    public PaginatedList<QuestionViewModel> PageModel { get; set; }
+    private readonly IMessageService _messageService = messageService;
+    public PaginatedList<MessageViewModel> PageModel { get; set; }
     public async Task OnGet([FromQuery] Pagination pagination)
     {
-        PageModel=await _questionService.GetQuestionsAsync(pagination);
+        PageModel = await _messageService.GetMessagesAsync(pagination);
     }
     public async Task<IActionResult> OnPostDeleteAsync([FromBody] InputModel Input)
     {
         try
         {
-            await _questionService.DeleteQuestionAsync(Input.Id);
+            await _messageService.DeleteMessageAsync(Input.Id);
             return new JsonResult(new
             {
                 IsSuccess = true,
@@ -39,5 +35,4 @@ public class IndexModel : PageModel
             });
         }
     }
-
 }

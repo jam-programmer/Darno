@@ -6,21 +6,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Pages;
-[IgnoreAntiforgeryToken]
 
-public class ContactModel (IMessageService messageService): PageModel
+public class ContactUsModel(IMessageService messageService) : PageModel
 {
-    readonly IMessageService _messageService= messageService;
+    readonly IMessageService _messageService = messageService;
     public void OnGet()
     {
     }
-    public async Task<IActionResult> OnPostSendMessageAsync
-        ([FromBody] MessageModel Input)
+    public async Task<IActionResult> OnPostSendMessageAsync([FromBody] MessageModel input)
     {
         try
         {
             await _messageService.InsertMessageAsync
-                (Input.Adapt<MessageDto>());
+                (new MessageDto()
+                {
+                    Position=input.position,
+                    CompanyName=input.companyName,
+                    PhoneNumber=input.phoneNumber,
+                    FullName=input.fullname,
+                    Message=input.message
+
+
+
+                });
             return new JsonResult(new
             {
                 IsSuccess = true,

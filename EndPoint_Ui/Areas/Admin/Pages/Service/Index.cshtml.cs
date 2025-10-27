@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Service;
-[IgnoreAntiforgeryToken]
-
 public class IndexModel (IServiceService service): PageModel
 {
     readonly IServiceService _service = service;

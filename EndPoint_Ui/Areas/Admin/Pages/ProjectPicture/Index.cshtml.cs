@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.ProjectPicture;
-[IgnoreAntiforgeryToken]
 public class IndexModel : PageModel
 {
     readonly IProjectPictureService _projectPictureService;

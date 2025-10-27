@@ -6,7 +6,9 @@ using Scrutor;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddRazorPages();
+//.AddRazorPagesOptions(o => { o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute()); });
 
 
 builder.Services.Application(builder.Configuration);

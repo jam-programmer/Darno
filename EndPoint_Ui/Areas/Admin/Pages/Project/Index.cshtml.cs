@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Project;
-[IgnoreAntiforgeryToken]
+
 public class IndexModel : PageModel
 {
     readonly IProjectService _projectService;

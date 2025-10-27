@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Role;
-[IgnoreAntiforgeryToken]
 public class IndexModel : PageModel
 {
     readonly IRoleService _roleService;

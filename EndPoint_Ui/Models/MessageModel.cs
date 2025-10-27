@@ -2,9 +2,9 @@
 
 public class MessageModel
 {
-    public string? FullName { get; set; }
-    public string? PhoneNumber { get; set; }
-    public string? CompanyName { get; set; }
-    public string? Position { get; set; }
-    public string? Message { get; set; }
+    public string? fullname { get; set; }
+    public string? phoneNumber { get; set; }
+    public string? companyName { get; set; }
+    public string? position { get; set; }
+    public string? message { get; set; }
 }

@@ -6,6 +6,7 @@
     <script src="~/js/pagination.js"></script>
     <script src="~/assets/js/role/index.js"></script>
 }
+
 @{
     var routes = new List<NavigationRouteModel>
     {
@@ -30,8 +31,8 @@
 }
 <div class="row">
     <navigation routes="@routes"></navigation>
+    @Html.AntiForgeryToken()
 
-  
 </div>
 
     

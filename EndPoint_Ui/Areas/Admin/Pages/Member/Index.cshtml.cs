@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Member;
-[IgnoreAntiforgeryToken]
+
 public class IndexModel : PageModel
 {
     readonly IMemberService _memberService;

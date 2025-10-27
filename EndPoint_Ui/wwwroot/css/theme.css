@@ -4775,3 +4775,24 @@ span{
 .text-red{
     color:red !important;
 }
+.custom-confirm-btn {
+   padding:5px;
+   margin:3px;
+   border-radius:5px;
+    background-color: green !important;
+    color: white !important;
+}
+.custom-info-btn {
+    padding: 5px;
+    margin: 3px;
+    border-radius: 5px;
+    background-color: #2465a3 !important;
+    color: white !important;
+}
+.custom-cancel-btn {
+    padding: 5px;
+    margin: 3px;
+    border-radius: 5px;
+    background-color: red !important;
+    color: white !important;
+}
