@@ -14,5 +14,6 @@ public interface IUserService
     Task<UserDto> GetUserByIdAsync(Guid UserId, CancellationToken cancellationToken);
     Task<PaginatedList<UserViewModel>> GetUsersAsync(Pagination pagination,CancellationToken cancellationToken);
     Task<Dictionary<string, string>> GetUserRolesByIdAsync(Guid userId);
+    Task SignInAsync(SignInDto signIn,CancellationToken cancellationToken=default);
 
 }

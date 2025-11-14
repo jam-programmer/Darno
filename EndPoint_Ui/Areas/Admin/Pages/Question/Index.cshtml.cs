@@ -2,10 +2,12 @@ using Application.Common;
 using Application.Services.Question;
 using Application.ViewModels;
 using EndPoint_Ui.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace EndPoint_Ui.Areas.Admin.Pages.Question;
 
+[Authorize]
 
 public class IndexModel : PageModel
 {

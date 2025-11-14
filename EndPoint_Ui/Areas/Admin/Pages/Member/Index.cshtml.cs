@@ -3,10 +3,12 @@ using Application.Contract;
 using Application.Services.Member;
 using Application.ViewModels;
 using EndPoint_Ui.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Member;
+[Authorize]
 
 public class IndexModel : PageModel
 {

@@ -1,9 +1,11 @@
 using Application.DataTransferObject;
 using Application.Services.Role;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Role;
+[Authorize]
 
 public class CreateModel : PageModel
 {

@@ -2,11 +2,13 @@ using Application.Common;
 using Application.Services.Role;
 using Application.ViewModels;
 using EndPoint_Ui.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EndPoint_Ui.Areas.Admin.Pages.Role;
+namespace EndPoint_Ui.Areas.Admin.Pages.Role; [Authorize]
+
 public class IndexModel : PageModel
 {
     readonly IRoleService _roleService;

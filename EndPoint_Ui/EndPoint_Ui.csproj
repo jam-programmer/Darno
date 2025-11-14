@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\order.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\order.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\assets\ckeditor\plugins\exportpdf\node_modules\.package-lock.json" />
     <Content Include="wwwroot\assets\ckeditor\plugins\exportpdf\node_modules\ckeditor4\assets\ckeditor4.png" />
     <Content Include="wwwroot\assets\ckeditor\plugins\exportpdf\node_modules\ckeditor4\bower.json" />
@@ -2834,6 +2842,36 @@
     <None Include="wwwroot\assets\ckeditor\plugins\exportpdf\node_modules\ckeditor4\skins\moono\skin.js" />
     <None Include="wwwroot\assets\ckeditor\plugins\exportpdf\node_modules\ckeditor4\styles.js" />
     <None Include="wwwroot\assets\ckeditor\plugins\exportpdf\node_modules\ckeditor4\vendor\promise.js" />
+    <None Include="wwwroot\fonts\themify9f24.svg" />
+    <None Include="wwwroot\img\about-us-img-bg.svg" />
+    <None Include="wwwroot\img\about-us-img.svg" />
+    <None Include="wwwroot\img\bullhorn.svg" />
+    <None Include="wwwroot\img\consult.svg" />
+    <None Include="wwwroot\img\credit-card.svg" />
+    <None Include="wwwroot\img\cta-1-man.svg" />
+    <None Include="wwwroot\img\cta-1-mike.svg" />
+    <None Include="wwwroot\img\hero-offer-img.svg" />
+    <None Include="wwwroot\img\increase.svg" />
+    <None Include="wwwroot\img\interface.svg" />
+    <None Include="wwwroot\img\promo-icon-bg.svg" />
+    <None Include="wwwroot\img\search-engine.svg" />
+    <None Include="wwwroot\img\slider-bg-1.svg" />
+    <None Include="wwwroot\img\slider-bg-2.svg" />
+    <None Include="wwwroot\img\t1-hero-img.svg" />
+    <None Include="wwwroot\img\t2-hero-img.svg" />
+    <None Include="wwwroot\img\t3-hero-img.svg" />
+    <None Include="wwwroot\img\t3-hero-shape.svg" />
+    <None Include="wwwroot\img\t5-hero-img.svg" />
+    <None Include="wwwroot\img\t5-hero-shape %282%29.svg" />
+    <None Include="wwwroot\img\t5-hero-shape.svg" />
+    <None Include="wwwroot\img\t6-hero-img1.svg" />
+    <None Include="wwwroot\js\order.js" />
+    <None Include="wwwroot\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\webfonts\fa-solid-900.woff2" />
   </ItemGroup>
 
   <ItemGroup>

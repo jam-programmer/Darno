@@ -193,6 +193,77 @@ namespace Infrastructure.Migrations
                     b.ToTable("Message", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.OrderEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("File")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HaveDomain")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HaveHost")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsBlog")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("IsMultilingual")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsOnlineChat")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsOnlinePaymentGateway")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsPwa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsReport")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsSms")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlatformType")
+                        .HasColumnType("int");
+
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("ProjectType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Order", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.ProjectEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -312,6 +383,57 @@ namespace Infrastructure.Migrations
                         .HasFilter("[UniqueName] IS NOT NULL");
 
                     b.ToTable("Service", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.SettingEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AboutUs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstagramUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkedInUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelegramUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Setting", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("20ea895d-b448-4e02-9c8a-cd40f871c372"),
+                            AboutUs = "",
+                            Address = "",
+                            Email = "",
+                            InstagramUrl = "",
+                            LinkedInUrl = "",
+                            PhoneNumber = "",
+                            TelegramUrl = ""
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

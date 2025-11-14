@@ -20,15 +20,18 @@ namespace Application.Services.User;
 
 public class UserService : IUserService
 {
+    readonly SignInManager<UserEntity> _signInManager;
     readonly RoleManager<RoleEntity> _roleManager;
     readonly UserManager<UserEntity> _userManager;
     readonly IContext _context;
     public UserService(
         IContext context,
         RoleManager<RoleEntity> roleManager,
+        SignInManager<UserEntity> signInManager,
         UserManager<UserEntity> userManager
         )
     {
+        _signInManager=signInManager;
         _context = context;
         _roleManager = roleManager;
         _userManager = userManager;
@@ -260,6 +263,27 @@ public class UserService : IUserService
         return result;
     }
 
-  
+    public async Task SignInAsync(SignInDto signIn, CancellationToken cancellationToken)
+    {
+        UserEntity? userEntity = await _userManager.Users.
+            FirstOrDefaultAsync(f => f.UserName == signIn.UserName, cancellationToken);
+        if (userEntity == null) 
+        {
+            throw new InternalException("نام کاربری یا گذرواژه الزامی است");
+        }
+        bool checkPassword=await _userManager.
+            CheckPasswordAsync(userEntity,signIn.Password!);
+        if (checkPassword == false)
+        {
+            throw new InternalException("نام کاربری یا گذرواژه الزامی است");
+        }
 
+
+        bool canSignIn=await _signInManager.CanSignInAsync(userEntity);
+        if (checkPassword == false)
+        {
+            throw new InternalException("امکان ورود به حساب کاربری وجود ندارد");
+        }
+        await _signInManager.SignInAsync(userEntity, signIn.RememberMe);
+    }
 }

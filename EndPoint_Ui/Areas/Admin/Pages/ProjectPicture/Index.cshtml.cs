@@ -3,10 +3,13 @@ using Application.Services.Project;
 using Application.Services.ProjectPicture;
 using Application.ViewModels;
 using EndPoint_Ui.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.ProjectPicture;
+[Authorize]
+
 public class IndexModel : PageModel
 {
     readonly IProjectPictureService _projectPictureService;

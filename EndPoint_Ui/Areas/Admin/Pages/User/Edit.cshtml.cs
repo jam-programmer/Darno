@@ -2,10 +2,12 @@ using Application.Common.CustomException;
 using Application.DataTransferObject;
 using Application.Services.Role;
 using Application.Services.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.User;
+[Authorize]
 
 public class EditModel : PageModel
 {

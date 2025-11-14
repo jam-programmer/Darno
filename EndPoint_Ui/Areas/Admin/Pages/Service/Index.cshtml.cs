@@ -2,10 +2,12 @@ using Application.Common;
 using Application.Services.Service;
 using Application.ViewModels;
 using EndPoint_Ui.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace EndPoint_Ui.Areas.Admin.Pages.Service;
+namespace EndPoint_Ui.Areas.Admin.Pages.Service; [Authorize]
+
 public class IndexModel (IServiceService service): PageModel
 {
     readonly IServiceService _service = service;
