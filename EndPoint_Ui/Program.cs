@@ -2,7 +2,7 @@ using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Scrutor;
-
+using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -43,5 +43,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
+IndexModel index = new IndexModel();
+index.OnGet();
 app.Run();
