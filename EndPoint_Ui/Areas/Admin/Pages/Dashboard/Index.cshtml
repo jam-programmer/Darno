@@ -2,3 +2,42 @@
 @model EndPoint_Ui.Areas.Admin.Pages.Dashboard.IndexModel
 @{
 }
+
+
+@if(Model.Informations is not null && Model.Informations.Any())
+{
+    @foreach(var  item in Model.Informations)
+    {
+        <div class="alert alert-primary" role="alert">
+            <h6 class="alert-heading mb-1">Name is:</h6>
+            <span> @item.Name</span>
+        </div>
+
+
+        <div class="alert alert-secondary" role="alert">
+            <h6 class="alert-heading mb-1">Type is :</h6>
+            <span> @item.DriveType</span>
+        </div>
+
+        <div class="alert alert-success" role="alert">
+            <h6 class="alert-heading mb-1">Volum lable  is :</h6>
+            <span> @item.VolumeLabel</span>
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <h6 class="alert-heading mb-1">File system:</h6>
+              @item.DriveFormat
+        </div>
+        <div class="alert alert-danger" role="alert">
+            <h6 class="alert-heading mb-1">Available space to current user: </h6>
+            @item.AvailableFreeSpace  Bytes
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <h6 class="alert-heading mb-1">Total available space:</h6>
+            <span> @item.AvailableFreeSpace Bytes</span>
+        </div>
+       
+
+       
+
+    }
+}
