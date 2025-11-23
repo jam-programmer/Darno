@@ -1,0 +1,124 @@
+﻿@page
+@model EndPoint_Ui.Pages.ContactUsModel
+@{
+    string? title = "تماس با ما";
+}
+<partial name="/Pages/Shared/Partial/_HeaderPage.cshtml" model="@title" />
+
+@section Script {
+    <script src="~/js/sweetalert.js"></script>
+    <script src="~/js/rest.js"></script>
+    <script src="~/js/contactus.js"></script>
+
+}
+@Html.AntiForgeryToken()
+<section class="contact-us-promo pt-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card single-promo-card single-promo-hover text-center shadow-sm">
+                    <div class="card-body py-5">
+                        <div class="pb-2">
+                            <span class="ti-mobile icon-sm color-secondary"></span>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">تلفن تماس</h5>
+                            <p class="text-muted mb-0">09144732794</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card single-promo-card single-promo-hover text-center shadow-sm">
+                    <div class="card-body py-5">
+                        <div class="pb-2">
+                            <span class="ti-location-pin icon-sm color-secondary"></span>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">نشانی</h5>
+                            <p class="text-muted mb-0">تهران، صادقیه</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card single-promo-card single-promo-hover text-center shadow-sm">
+                    <div class="card-body py-5">
+                        <div class="pb-2">
+                            <span class="ti-email icon-sm color-secondary"></span>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">پست الکترونیک</h5>
+                            <p class="text-muted mb-0">info@darnogroup.ir</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+
+
+<section class="contact-us-section ptb-100">
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-8  col-sm-12 col-lg-8">
+                <div class="contact-us-form gray-light-bg rounded p-5 text-center">
+                    <h4>
+                        در صورتی که امکان ارتباط مستقیم با ما را ندارید برای ما پیام ارسال کنید
+                    </h4>
+                    <div  class="contact-us-form" novalidate="novalidate">
+                      
+                           <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="fullname"
+                                               placeholder="نام نام خانوادگی" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="tel" id="phoneNumber"
+                                               placeholder="  شماره تماس" class="form-control">
+                                    </div>
+                                </div>
+                              
+                                <div class="col-6">
+                                    <div class="form-group">
+                                    <input type="text" id="companyName"
+                                           placeholder="نام سازمان / شرکت" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                    <input type="text" id="position"
+                                           placeholder="  جایگاه شغلی" class="form-control">
+                                    </div>
+                                </div>
+                           </div>
+
+
+
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                <textarea id="message" class="form-control" style="height:200px"
+                                          cols="25" placeholder="پیام"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mt-3">
+                            <button type="button"
+                                    onclick="SendMessage()" class="btn secondary-solid-btn" id="btnContactUs">
+                                    ارسال پیام
+                                </button>
+                            </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

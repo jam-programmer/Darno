@@ -1,0 +1,24 @@
+﻿@page
+@model EndPoint_Ui.Pages.Service.DetailModel
+
+<partial name="/Pages/Shared/Partial/_HeaderPage.cshtml" model="@Model.ServiceDetail.Title" />
+
+
+<section class="our-portfolio-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="section-heading text-center mb-4" dir="rtl">
+                   
+                    <p class="lead">
+                @Html.Raw(Model.ServiceDetail.Description) 
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</section>
+@await Component.InvokeAsync("ProjectsComponent",Model.ServiceDetail.Id)

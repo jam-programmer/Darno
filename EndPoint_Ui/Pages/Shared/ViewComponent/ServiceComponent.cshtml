@@ -1,0 +1,60 @@
+﻿@using Application.ViewModels
+@model IReadOnlyList<ServiceViewModel>
+
+
+<section class="services-section ptb-100 gray-light-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="section-heading text-center mb-5">
+                    <strong class="color-secondary">خدمات ما</strong>
+                    <h2>   با افتخار در خدمت شما هستیم</h2>
+                    <p class="lead">
+                        کلیه خدماتی که به شما ارائه میدهیم شامل یکسال پشتیبانی فنی رایگان به همراه آموزش های مربوطه به صورت حضوری و ویدئویی می باشد
+                    </p>
+                    <span class="animate-border mx-auto mb-4"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var service in Model)
+                {
+
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <a asp-page="/Service/Detail" asp-route-UniqueName="@service.UniqueName">
+                        <div class="services-single text-center p-5 my-md-3 my-lg-3 my-sm-0 shadow-sm white-bg rounded">
+                            
+                               
+                            <img src="~/gallery/Service/@service.ImagePath" >
+                            <h5 class="mt-3">@service.Title</h5>
+                            <p class="mb-0">به تدریج با مشارکت در سطح بندی منابع ، تجارت را در خارج از صندوق توانمند می کند.</p>
+                            <span class="detail-link mt-4">بیشتر بخوانید <span class="ti-arrow-left"></span></span>
+
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

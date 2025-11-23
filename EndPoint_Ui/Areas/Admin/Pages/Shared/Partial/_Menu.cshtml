@@ -1,0 +1,67 @@
+﻿
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo">
+        <a asp-page="/dashboard/Index" class="app-brand-link">
+         
+            <span class="app-brand-text demo menu-text fw-bold ms-2">پیشخوان</span>
+        </a>
+
+        
+    </div>
+
+    <div class="menu-divider mt-0"></div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+        <!-- Page -->
+        <li class="menu-item">
+            <a asp-page="/Role/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-medal"></i>
+                <div >مدیریت نقش</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-page="/User/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-user"></i>
+                <div > مدیریت کاربران</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-page="/Service/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-hammer"></i>
+                <div > خدمات</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a asp-page="/Project/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-diagram-project"></i>
+                <div >  پروژه ها</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a asp-page="/Member/Index" class="menu-link">
+                <i class="menu-icon fa-solid fa-people-group"></i>
+                <div > تیم ما</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a asp-page="/Question/Index" class="menu-link">
+            
+                <i class="menu-icon fa-solid fa-clipboard-question"></i>
+                <div > سوالات متداول</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a asp-page="/Message/Index" class="menu-link">
+
+                <i class="menu-icon fa-solid fa-envelope"></i>
+
+                <div>پیام ها</div>
+            </a>
+        </li>
+    </ul>
+</aside>

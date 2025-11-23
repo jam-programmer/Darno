@@ -1,0 +1,180 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Project.EditModel
+
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Project",
+            actionName = "Index",
+            title = "پروژه ها",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Project",
+            actionName = "Edit",
+            title = "ویرایش پروژه",
+            IsActive = false
+        }
+
+    };
+}
+
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <form asp-page="Edit" method="post" enctype="multipart/form-data"
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 card">
+        <div class="card-header">
+            <h4>ویرایش پروژه </h4>
+            @if (ViewData["Alert"] is not null)
+            {
+                <div class="alert alert-warning">@ViewData["Alert"]</div>
+            }
+        </div>
+        <div class="card-body">
+            <div class="row">
+              
+                <div class="col-4">
+                    @if (Model.Project.ImagePath == "default.jpg")
+                    {
+                        <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+
+                    }
+                    else
+                    {
+                        <img id="imagePath_1" width="100" height="80" src="~/Gallery/project/@Model.Project.ImagePath" />
+
+                    }
+                    <br/>
+                    <label class="form-label">تصویر</label>
+                    <input asp-for="Project.ImageFile"
+                           onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                    <span class="text-danger" asp-validation-for="Project.ImageFile"></span>
+                </div>
+                
+                <div class="col-4">
+                    @if (Model.Project.CertificatePath == "default.jpg")
+                    {
+                        <img id="imagePath_2" width="100" height="80" src="~/Gallery/default.jpg" />
+
+                    }
+                    else
+                    {
+                        <img id="imagePath_2" width="100" height="80"
+                             src="~/Gallery/project/@Model.Project.CertificatePath" />
+
+                    }
+                    <br /><label class="form-label">گواهی حسن انجام کار</label>
+                    <input asp-for="Project.CertificateFile"
+                           onchange="ChangeImage(this,2)" class="form-control" type="file" />
+                    <span class="text-danger" asp-validation-for="Project.CertificateFile"></span>
+                </div>
+              
+                <div class="col-4">
+                    @if (Model.Project.LogoPath == "default.jpg")
+                    {
+                        <img id="imagePath_3" width="100" height="80" src="~/Gallery/default.jpg" />
+
+                    }
+                    else
+                    {
+                        <img id="imagePath_3" width="100" height="80"
+                             src="~/Gallery/project/@Model.Project.LogoPath" />
+
+                    }
+                    <br />  <label class="form-label">لوگو</label>
+                    <input asp-for="Project.LogoFile"
+                           onchange="ChangeImage(this,3)" class="form-control" type="file" />
+                    <span class="text-danger" asp-validation-for="Project.LogoFile"></span>
+                </div>
+            </div>
+          <div class="row">
+                <div class="col-4">
+                    <label class="form-label">عنوان</label>
+                    <input type="text" asp-for="Project.Title" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Project.Title"></span>
+                </div>
+                 <div class="col-4">
+                    <label class="form-label">لینک</label>
+                    <input type="text" asp-for="Project.Url" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Project.Url"></span>
+                </div>
+                 <div class="col-4">
+                    <label class="form-label">کارفرما</label>
+                    <input type="text" asp-for="Project.Owner" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Project.Owner"></span>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">اسکریپت آپارات</label>
+                    <textarea rows="6" asp-for="Project.Aparat"  class="form-control"></textarea>
+                </div>  <div class="col-6">
+                    <label class="form-label">دیدگاه کارفرما</label>
+                    <textarea rows="6" asp-for="Project.Opinion" class="form-control"></textarea>
+                </div>
+                <div class="mb-3 col-12">
+                    <label  class="form-label">انتخاب خدمت</label>
+                    <select asp-for="Project.ServiceId"  class="form-select">
+                        <option selected="" disabled>یک گزینه انتخاب کنید</option>
+                        @if (ViewData["Services"] != null)
+                        {
+                            foreach (var item in ViewData["Services"] as IReadOnlyDictionary<Guid,string>)
+                            {
+                                @if (item.Key == Model.Project.ServiceId)
+                                {
+                                    <option value="@item.Key" selected="">@item.Value</option>
+
+                                }
+                                else
+                                {
+                                    <option value="@item.Key">@item.Value</option>
+
+                                }
+                            }
+                        }
+                        
+                    </select>
+                </div>
+
+                <input type="hidden" asp-for="Project.Id"/>
+                <input type="hidden" asp-for="Project.ImagePath"/>
+                <input type="hidden" asp-for="Project.CertificatePath"/>
+                <input type="hidden" asp-for="Project.LogoPath"/>
+
+                <div class="col-12">
+                    <label class="form-label">توضیحات</label>
+                    <textarea rows="6" asp-for="Project.Description" id="Description" class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for="Project.Description"></span>
+                </div>
+          </div>
+
+
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-success text-white" type="submit">ثبت</button>
+            <a asp-page="/Project/Index" class="btn btn-sm btn-warning text-white">بازگشت</a>
+        </div>
+    </form>
+
+</div>
+
+@section Script {
+
+    <script src="~/assets/ckeditor/ckeditor.js"></script>
+    <script src="~/assets/js/project/create.js"></script>
+    <script src="~/assets/js/upload.js"></script>
+
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

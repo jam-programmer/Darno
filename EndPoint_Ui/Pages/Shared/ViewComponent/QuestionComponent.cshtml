@@ -1,0 +1,46 @@
+﻿@using Application.ViewModels
+@model IReadOnlyList<QuestionForMainPageViewModel>
+
+<section class="gray-light-bg ptb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-8">
+                <div class="section-heading mb-3 text-center">
+                    <h2>سوالات متداول</h2>
+                    <p class="lead">
+                        پرتکرارترین سوالاتی که شما از ما می پرسید
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var question in Model)
+                {
+                    <div class="col-md-6">
+                        <div class="single-faq mt-4">
+                            <h5>  @question.Title</h5>
+                            <p>
+                                @question.Description
+                            </p>
+                        </div>
+                    </div>
+                  
+           
+
+                }
+            }
+  
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+﻿@using Application.ViewModels
+@model IReadOnlyList<MemberForMainPageViewModel>
+
+
+<section class="team-two-section ptb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-8">
+                <div class="section-heading text-center mb-5">
+                    <strong class="color-secondary">تیم ما</strong>
+                    <h2> تیم پیشرو، قوی و خلاق ما </h2>
+                    <span class="animate-border mx-auto mb-4"></span>
+@*                     <p class="lead">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</p>
+ *@                </div>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var member in Model)
+                {
+                    
+
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="staff-member my-md-3 my-lg-3 my-sm-0">
+                            <div class="card text-center">
+                                <img src="~/gallery/Member/@member.ImagePath" width="120" class="img-fluid m-auto pt-4">
+                                <div class="card-body">
+                                    <h5 class="teacher mb-0">@member.FullName</h5>
+                                    <span>@member.JobTitle</span>
+                                    <p class="teacher-quote pt-3">لورم ایپسوم متن ساختگی با تولید سادگی</p>
+                                    <ul class="list-inline pt-2 social">
+
+
+                                        <li class="list-inline-item">
+                                            <a href=" @member.Linkedin " class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                                <img src="~/gallery/linkedin-svgrepo-com.svg" width="30" height="30" />
+                                            </a>
+                                        </li>
+
+
+                                        <li class="list-inline-item">
+                                            <a href="@member.Instagram  " class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                                <img src="~/gallery/instagram-svgrepo-com.svg" width="30" height="30" />
+                                            </a>
+                                        </li>
+
+                                        
+                                        <li class="list-inline-item">
+                                            <a href="@member.Email" class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                                <img src="~/gallery/email-svgrepo-com.svg" width="30" height="30" />
+
+                                            </a>
+                                        </li>
+
+
+                                        <li class="list-inline-item">
+                                            <a href="@member.GitHub" class="group duration-500 transition-colors hover:transition-colors hover:duration-500">
+                                                <img src="~/gallery/github-svgrepo-com.svg" width="30" height="30" />
+
+                                            </a>
+                                        </li>
+
+
+
+
+
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                }
+            }
+
+
+
+
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+

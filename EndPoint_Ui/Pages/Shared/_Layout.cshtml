@@ -1,0 +1,44 @@
+﻿
+<!doctype html>
+<html lang="en">
+<head>
+    <partial name="/Pages/Shared/Partial/_HeadTag.cshtml" />
+    @await RenderSectionAsync("Style",false)
+</head>
+<body>
+
+    <!--loader start-->
+    <div id="preloader">
+        <div class="loader1">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!--loader end-->
+    <!--header section start-->
+    <partial name="/Pages/Shared/Partial/_Header.cshtml" />
+    <!--header section end-->
+    <!--body content wrap start-->
+    <div class="main">
+
+    @RenderBody()
+
+    </div>
+    <!--body content wrap end-->
+    <!--footer section start-->
+    <partial name="/Pages/Shared/Partial/_Footer.cshtml" />
+
+    <!--footer section end-->
+    <!--bottom to top button start-->
+    <button class="scroll-top scroll-to-target" data-bs-target="html">
+        <span class="ti-angle-up"></span>
+    </button>
+    <!--bottom to top button end-->
+    <partial name="/Pages/Shared/Partial/_Script.cshtml" />
+
+    @await RenderSectionAsync("Script",false)
+</body>
+</html>

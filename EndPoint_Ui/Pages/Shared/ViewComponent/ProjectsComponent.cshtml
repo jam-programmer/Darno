@@ -1,0 +1,57 @@
+﻿@using Application.ViewModels
+@model IReadOnlyList<ProjectCardViewModel>
+
+
+@if (Model != null && Model.Any())
+{
+
+<section class="our-portfolio-section ptb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-heading text-center mb-5">
+                        <strong class="color-secondary">
+                            پروژه های موفق
+
+                        </strong>
+                        <h2>
+                            نمونه کارهای مرتبط
+                        </h2>
+                    <span class="animate-border mx-auto mb-4"></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               
+                <div class="portfolio-container" id="MixItUp">
+
+                        @foreach (ProjectCardViewModel item in Model)
+                        {
+
+                            <div class="mix portfolio-item branding" data-ref="mixitup-target">
+                                <div class="portfolio-wrapper">
+                                    <a href="project-details.html" target="_blank">
+                                        <div class="content-overlay"></div>
+                                        <img class="img-fluid" src="~/gallery/Project/@item.ImagePath" >
+                                        <div class="content-details fadeIn-bottom text-white">
+                                            <h5 class="text-white mb-1">@item.ServiceTitle</h5>
+                                            
+                                        </div>
+                                    </a>
+                                    <div class="text-center p-4">
+                                        <h5 class="mb-1">@item.Title</h5>
+                                        <span>@item.Owner</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+}

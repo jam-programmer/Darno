@@ -1,0 +1,103 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Message.IndexModel
+
+
+@section Script {
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/message/index.js"></script>
+}
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Question",
+            actionName = "Index",
+            title = "پیام ها",
+            IsActive = true
+        }
+
+    };
+}
+
+
+<div class="row">
+    @Html.AntiForgeryToken()
+    <navigation routes="@routes"></navigation>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="heading-color">
+                پیام ها
+            </h5>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>نام و نام خانوادگی</th>
+
+                            <th>شماره تماس</th>
+                            <th>نام شرکت / سازمان</th>
+                            <th>جایگاه شغلی</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PageModel.List!)
+                        {
+                            <input type="hidden" value="@item.Message" id="message_@item.Id" />
+                            <tr id="item_@item.Id">
+
+                                <td>@item.FullName</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>@item.CompanyName</td>
+                                <td>@item.Position</td>
+                             
+                                <td>
+
+                                    <a onclick="ShowMessage('@item.Id')" class="btn btn-sm btn-info text-white">
+                                        نمایش پیام
+                                    </a>
+                                    <a onclick="Delete('@item.Id')" class="btn btn-sm btn-danger text-white">حذف</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+        <div class="card-footer">
+
+            @if (Model.PageModel.TotalPage > 1)
+            {
+                <div class="card-footer">
+                    <div id="pagination-body"
+                         data-page-index="@Model.PageModel.CurrentPage"
+                         data-total-pages="@Model.PageModel.TotalPage"
+                         data-search="@Model.PageModel.Keyword"
+                         data-path="/Admin/Message/Index">
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+
+</div>

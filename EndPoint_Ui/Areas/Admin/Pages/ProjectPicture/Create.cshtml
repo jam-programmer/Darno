@@ -1,0 +1,87 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.ProjectPicture.CreateModel
+
+
+
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Project",
+            actionName = "Index",
+            title = "پروژه ها",
+            IsActive = false
+        }
+        ,
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "ProjectPicture",
+            actionName = "Index",
+            title = "تصاویر پروژه",
+            IsActive = true
+        }    ,
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "ProjectPicture",
+            actionName = "Create",
+            title = "ایجاد تصویر",
+            IsActive = true
+        }
+    };
+
+}
+
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <form asp-page="Create" method="post" enctype="multipart/form-data"
+          class="col-xl-8 col-lg-8 col-md-12 col-sm offset-xl-2 offset-lg-2 card">
+        <div class="card-header">
+            <h4>ایجاد تصویر جدید</h4>
+            @if (ViewData["Alert"] is not null)
+            {
+                <div class="alert alert-warning">@ViewData["Alert"]</div>
+            }
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+                </div>
+                <div class="col-3">
+                    <label class="form-label">تصویر</label>
+                    <input asp-for="ProjectPicture.ImageFile"
+                           onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                    <span class="text-danger" asp-validation-for="ProjectPicture.ImageFile"></span>
+                </div>
+            </div>
+
+            <input type="hidden" asp-for="ProjectPicture.ProjectId" value="@ViewData["ProjectId"]"/>
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-success text-white" type="submit">ثبت</button>
+            <a asp-page="/ProjectPicture/Index"
+               asp-route-projectId="@ViewData["ProjectId"]"
+            class="btn btn-sm btn-warning text-white">بازگشت</a>
+        </div>
+    </form>
+
+</div>
+
+@section Script {
+    <script src="~/assets/js/upload.js"></script>
+
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
