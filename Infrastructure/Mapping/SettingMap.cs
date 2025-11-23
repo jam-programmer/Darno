@@ -19,6 +19,11 @@ internal sealed class SettingMap : IEntityTypeConfiguration<SettingEntity>
             LinkedInUrl=string.Empty,
             PhoneNumber=string.Empty,
             TelegramUrl=string.Empty,
+<<<<<<< HEAD
+=======
+            Image=string.Empty,
+            Title=string.Empty
+>>>>>>> b902ca26a3f54e6157eb71cd1a1a6b04250bed34
         });
     }
 }

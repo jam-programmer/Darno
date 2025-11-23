@@ -4,6 +4,7 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    partial class SqlServerContextModelSnapshot : ModelSnapshot
+    [Migration("20251120112806_AddImageInSetting")]
+    partial class AddImageInSetting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -402,12 +405,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
-=======
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
->>>>>>> b902ca26a3f54e6157eb71cd1a1a6b04250bed34
                     b.Property<string>("InstagramUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -424,12 +424,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
-=======
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
->>>>>>> b902ca26a3f54e6157eb71cd1a1a6b04250bed34
                     b.HasKey("Id");
 
                     b.ToTable("Setting", (string)null);
