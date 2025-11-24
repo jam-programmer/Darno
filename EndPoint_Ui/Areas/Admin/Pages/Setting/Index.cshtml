@@ -1,0 +1,113 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Setting.IndexModel
+
+
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+        
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Setting",
+            actionName = "Index",
+            title = "تنظیمات",
+            IsActive = false
+        }
+
+    };
+}
+
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <form asp-page="Index" method="post" enctype="multipart/form-data"
+          class="col-xl-12 col-lg-12 col-md-12 col-sm-12 card">
+        <div class="card-header">
+            <h4>تنظیمات</h4>
+           
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-4">
+                    @if (Model.Setting!.Image == "default.jpg")
+                    {
+                        <img id="imagePath_1" width="100" height="80" src="~/Gallery/default.jpg" />
+
+                    }
+                    else
+                    {
+                        <img id="imagePath_1" width="100" height="80" src="~/Gallery/Setting/@Model.Setting.Image" />
+
+                    } <br />
+                    <label class="form-label">تصویر</label>
+                    <input asp-for="Setting!.ImageFile"
+                           onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                </div>
+
+               
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="form-label">عنوان</label>
+                    <input type="text" asp-for="Setting!.Title" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <label class="form-label">شماره تماس</label>
+                    <input type="text" asp-for="Setting!.PhoneNumber" class="form-control" />
+                </div> 
+                <div class="col-4">
+                    <label class="form-label">ایمیل</label>
+                    <input type="text" asp-for="Setting!.Email" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <label class="form-label">اینستاگرام</label>
+                    <input type="text" asp-for="Setting!.InstagramUrl" class="form-control" />
+                </div>
+                 <div class="col-4">
+                    <label class="form-label">لینکدین</label>
+                    <input type="text" asp-for="Setting!.LinkedInUrl" class="form-control" />
+                </div>
+                 <div class="col-4">
+                    <label class="form-label">تلگرام</label>
+                    <input type="text" asp-for="Setting!.TelegramUrl" class="form-control" />
+                </div>
+                <div class="col-12">
+                    <label class="form-label">نشانی</label>
+                    <input type="text" asp-for="Setting!.TelegramUrl" class="form-control" />
+                </div>
+
+
+                <div class="col-12">
+                    <label class="form-label">درباره ما</label>
+                    <textarea rows="6" asp-for="Setting!.AboutUs"  class="form-control"></textarea>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-success text-white" type="submit">
+                ذخیره تنظیمات
+            </button>
+        </div>
+    </form>
+
+    </div>
+@section Script {
+
+    <script src="~/assets/ckeditor/ckeditor.js"></script>
+    <script src="~/assets/js/project/create.js"></script>
+    <script src="~/assets/js/upload.js"></script>
+
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
