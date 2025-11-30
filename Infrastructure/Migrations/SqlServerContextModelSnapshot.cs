@@ -402,9 +402,12 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+<<<<<<< HEAD
+=======
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+>>>>>>> b902ca26a3f54e6157eb71cd1a1a6b04250bed34
                     b.Property<string>("InstagramUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -421,9 +424,12 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+<<<<<<< HEAD
+=======
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+>>>>>>> b902ca26a3f54e6157eb71cd1a1a6b04250bed34
                     b.HasKey("Id");
 
                     b.ToTable("Setting", (string)null);

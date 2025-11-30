@@ -1,14 +1,26 @@
+<<<<<<< HEAD
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+=======
 using Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.IO;
+>>>>>>> b902ca26a3f54e6157eb71cd1a1a6b04250bed34
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Dashboard;
 
 [Authorize]
 public class IndexModel : PageModel
 {
+<<<<<<< HEAD
+    public void OnGet()
+    {
+    }
+}
+=======
 
     public List<DriveInformationViewModel> Informations = [];
     public void OnGet()
@@ -64,3 +76,4 @@ public class IndexModel : PageModel
 
 
 
+>>>>>>> b902ca26a3f54e6157eb71cd1a1a6b04250bed34
