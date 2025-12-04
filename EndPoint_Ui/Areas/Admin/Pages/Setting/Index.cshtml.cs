@@ -14,4 +14,13 @@ public class IndexModel (ISettingService settingService): PageModel
     {
         Setting=await _settingService.GetSettingAsync();
     }
+
+
+
+
+    public async Task<IActionResult> OnPost()
+    {
+        await _settingService.UpdateSettingAsync(Setting);
+        return RedirectToPage();
+    }
 }
