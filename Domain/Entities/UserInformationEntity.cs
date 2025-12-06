@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    internal class UserInformationEntity
+    public class UserInformationEntity
     {
+        public string MyProperty { get; set; }
     }
 }

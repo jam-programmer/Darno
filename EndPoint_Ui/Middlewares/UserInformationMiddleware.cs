@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Application.DataTransferObject;
+using Application.Services.User;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -6,29 +8,39 @@ using System.Threading.Tasks;
 namespace EndPoint_Ui.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
-    public class UserInformationMiddleware
+    public class UserInformationMiddleware 
     {
 
         private readonly RequestDelegate _next;
+        private readonly IUserService _userService;
 
-        public UserInformationMiddleware(RequestDelegate next)
+        public UserInformationMiddleware(RequestDelegate next, IUserService userService)
         {
             _next = next;
+            _userService = userService;
         }
 
-        public async Task Invoke(HttpContext httpContext)
-        {
-            string userAgent = httpContext.Request.Headers["User-Agent"];
-            string ip = httpContext.Connection.RemoteIpAddress.ToString();
-            string userInformation = httpContext.User.FindFirst("id")?.Value;
 
+        public async Task InvokeAsync(HttpContext httpContext)
+        {
+            string? UserAgent = httpContext.Request.Headers["User-Agent"];
+            string Ip = httpContext.Connection.RemoteIpAddress.ToString();
+            string? UserInformation = httpContext.User.FindFirst("id")?.Value;
             Stopwatch sw = Stopwatch.StartNew();
+            
             await _next(httpContext);
 
             sw.Stop();
-            int statuscode = httpContext.Response.StatusCode;
-            TimeSpan duration = sw.Elapsed;
+            int Statuscode = httpContext.Response.StatusCode;
+            TimeSpan Duration = sw.Elapsed;
 
+            await _userService.SaveUserInformation(new UserInformationDto {
+                UserAgent = UserAgent,
+                Ip = Ip,
+                UserInformation = UserInformation,
+                Statuscode = Statuscode,
+             
+            }  );
         }
     }
 

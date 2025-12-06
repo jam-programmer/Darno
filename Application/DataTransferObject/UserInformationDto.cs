@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Application.DataTransferObject
 {
-    public class UserInformationDto
+    public sealed record UserInformationDto
     {
-        public string userAgent { get; set; }
-        public string ip { get; set; }
-        public string userInformation { get; set; }
-        public int statuscode { get; set; }
-        public int duration { get; set; }
+        public string? UserAgent { get; set; }
+        public string? Ip { get; set; }
+        public string? UserInformation { get; set; }
+        public int Statuscode { get; set; }
+        public int Duration { get; set; }
     }
 }
