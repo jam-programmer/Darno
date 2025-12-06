@@ -1,15 +1,26 @@
 using System;
 using Application;
+<<<<<<< HEAD
 using Application.Services.User;
+=======
+
+>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 using EndPoint_Ui.Middlewares;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Scrutor;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Scrutor;
 using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
+<<<<<<< HEAD
 
+=======
+>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -54,6 +65,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
+<<<<<<< HEAD
 IndexModel index = new IndexModel();
 index.OnGet();
+=======
+
+>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 app.Run();
