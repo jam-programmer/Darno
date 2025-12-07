@@ -24,6 +24,7 @@ namespace Infrastructure.Context
                    .ToList();
                 entities.ForEach(entity => builder.Entity(entity));
             }
+
         }
     }
 }
