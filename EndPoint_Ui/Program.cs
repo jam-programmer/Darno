@@ -18,9 +18,13 @@ using Microsoft.AspNetCore.Mvc;
 using Scrutor;
 using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+=======
+//using EndPoint_Ui.Areas.Admin.Pages.Articles;
+>>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
