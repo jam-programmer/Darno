@@ -4,6 +4,7 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    partial class SqlServerContextModelSnapshot : ModelSnapshot
+    [Migration("20251202062952_AddImagePathToArticle")]
+    partial class AddImagePathToArticle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,30 +30,23 @@ namespace Infrastructure.Migrations
                 .IncrementsBy(2)
                 .HasMax(9223372036854775807L);
 
-<<<<<<< HEAD
-            modelBuilder.Entity("Domain.Entities.BlogCategoryEntity", b =>
-=======
             modelBuilder.Entity("Domain.Entities.ArticleEntity", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("PublishDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -58,51 +54,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Article", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.CategoryArticleEntity", b =>
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-<<<<<<< HEAD
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UrlName")
-=======
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("ParentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Slug")
-                        .IsRequired()
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-<<<<<<< HEAD
-                    b.ToTable("BlogCategoryEntity");
-=======
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("CategoryArticle", (string)null);
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
+                    b.ToTable("ArticleEntity");
                 });
 
             modelBuilder.Entity("Domain.Entities.Identity.RoleEntity", b =>
@@ -473,27 +425,27 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InstagramUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LinkedInUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelegramUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -507,12 +459,10 @@ namespace Infrastructure.Migrations
                             AboutUs = "",
                             Address = "",
                             Email = "",
-                            Image = "",
                             InstagramUrl = "",
                             LinkedInUrl = "",
                             PhoneNumber = "",
-                            TelegramUrl = "",
-                            Title = ""
+                            TelegramUrl = ""
                         });
                 });
 
@@ -619,27 +569,6 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.ArticleEntity", b =>
-                {
-                    b.HasOne("Domain.Entities.CategoryArticleEntity", "CategoryArticle")
-                        .WithMany("Articles")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CategoryArticle");
-                });
-
-            modelBuilder.Entity("Domain.Entities.CategoryArticleEntity", b =>
-                {
-                    b.HasOne("Domain.Entities.CategoryArticleEntity", "Parent")
-                        .WithMany("Childs")
-                        .HasForeignKey("ParentId")
-                        .IsRequired();
-
-                    b.Navigation("Parent");
-                });
-
             modelBuilder.Entity("Domain.Entities.ProjectEntity", b =>
                 {
                     b.HasOne("Domain.Entities.ServiceEntity", "Service")
@@ -711,13 +640,6 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.Entities.CategoryArticleEntity", b =>
-                {
-                    b.Navigation("Articles");
-
-                    b.Navigation("Childs");
                 });
 
             modelBuilder.Entity("Domain.Entities.ProjectEntity", b =>

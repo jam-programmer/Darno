@@ -39,6 +39,10 @@ public class IndexModel : PageModel
 
 
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
     }
 
 }

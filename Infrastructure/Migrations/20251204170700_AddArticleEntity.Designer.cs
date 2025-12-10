@@ -4,6 +4,7 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    partial class SqlServerContextModelSnapshot : ModelSnapshot
+    [Migration("20251204170700_AddArticleEntity")]
+    partial class AddArticleEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +30,6 @@ namespace Infrastructure.Migrations
                 .IncrementsBy(2)
                 .HasMax(9223372036854775807L);
 
-<<<<<<< HEAD
-            modelBuilder.Entity("Domain.Entities.BlogCategoryEntity", b =>
-=======
             modelBuilder.Entity("Domain.Entities.ArticleEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -64,7 +64,6 @@ namespace Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("Domain.Entities.CategoryArticleEntity", b =>
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,12 +72,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UrlName")
-=======
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
@@ -91,18 +84,13 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Slug")
                         .IsRequired()
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-<<<<<<< HEAD
-                    b.ToTable("BlogCategoryEntity");
-=======
                     b.HasIndex("ParentId");
 
                     b.ToTable("CategoryArticle", (string)null);
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
                 });
 
             modelBuilder.Entity("Domain.Entities.Identity.RoleEntity", b =>
@@ -473,27 +461,27 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InstagramUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LinkedInUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TelegramUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -507,12 +495,10 @@ namespace Infrastructure.Migrations
                             AboutUs = "",
                             Address = "",
                             Email = "",
-                            Image = "",
                             InstagramUrl = "",
                             LinkedInUrl = "",
                             PhoneNumber = "",
-                            TelegramUrl = "",
-                            Title = ""
+                            TelegramUrl = ""
                         });
                 });
 

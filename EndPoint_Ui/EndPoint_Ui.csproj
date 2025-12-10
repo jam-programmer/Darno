@@ -2887,4 +2887,8 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Pages\Articles\" />
+  </ItemGroup>
+
 </Project>
