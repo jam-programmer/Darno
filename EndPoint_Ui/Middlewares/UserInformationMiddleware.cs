@@ -23,8 +23,16 @@ namespace EndPoint_Ui.Middlewares
 
         public async Task InvokeAsync(HttpContext httpContext)
         {
+
+            string Ip=string.Empty;
             string? UserAgent = httpContext.Request.Headers["User-Agent"];
-            string Ip = httpContext.Connection.RemoteIpAddress.ToString();
+
+
+            if (httpContext!.Connection.RemoteIpAddress != null)
+            {
+
+             Ip = httpContext!.Connection.RemoteIpAddress.ToString();
+            }
             string? UserInformation = httpContext.User.FindFirst("id")?.Value;
             Stopwatch sw = Stopwatch.StartNew();
             

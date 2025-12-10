@@ -287,12 +287,11 @@ public class UserService : IUserService
         await _signInManager.SignInAsync(userEntity, signIn.RememberMe);
     }
 
-    public async Task SaveUserInformation(UserInformationDto dto)
+    public Task SaveUserInformation(UserInformationDto dto)
     {
-
+        return Task.CompletedTask;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+
 }
+

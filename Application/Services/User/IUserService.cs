@@ -15,12 +15,8 @@ public interface IUserService
     Task<PaginatedList<UserViewModel>> GetUsersAsync(Pagination pagination,CancellationToken cancellationToken);
     Task<Dictionary<string, string>> GetUserRolesByIdAsync(Guid userId);
     Task SignInAsync(SignInDto signIn,CancellationToken cancellationToken=default);
-<<<<<<< HEAD
 
     Task SaveUserInformation(UserInformationDto dto);
-=======
-    Task SaveUserInformation(UserInformationDto dto);
 
->>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 
 }
