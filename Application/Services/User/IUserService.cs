@@ -17,8 +17,11 @@ public interface IUserService
     Task SignInAsync(SignInDto signIn,CancellationToken cancellationToken=default);
 
 
-    Task SaveUserInformation(UserInformationDto dto);
-   // Task SaveUserInformation(UserInformationDto dto);
 
+    Task SaveUserInformation(UserInformationDto dto);
+   
+
+
+    
 
 }

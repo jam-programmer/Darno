@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Mapping
 {
-    internal class UserInformation
+    internal  sealed class UserInformation
     {
     }
 }

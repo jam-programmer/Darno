@@ -1,14 +1,16 @@
-using System;
 using Application;
 //<<<<<<< HEAD
 using Application.Services.User;
 //=======
 
 //>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+using Application.Services.User;
+using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
+
 using EndPoint_Ui.Middlewares;
 using Infrastructure;
-using Microsoft.AspNetCore.Mvc;
 using Scrutor;
+
 //<<<<<<< HEAD
 //=======
 
@@ -25,6 +27,9 @@ using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
 //=======
 //using EndPoint_Ui.Areas.Admin.Pages.Articles;
 //>>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -46,7 +51,7 @@ builder.Services.Scan(scan => scan
     .AsMatchingInterface()
     .WithScopedLifetime());
 
-builder.Services.AddScoped<IUserService,UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 var app = builder.Build();
@@ -62,17 +67,23 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseUserInformationMiddleware();
 
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseUserInformationMiddleware();
+
 app.MapRazorPages();
+
 //<<<<<<< HEAD
 //IndexModel index = new IndexModel();
 //index.OnGet();
 //=======
 
 //>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+
+IndexModel index = new IndexModel();
+index.OnGet();
+
 app.Run();

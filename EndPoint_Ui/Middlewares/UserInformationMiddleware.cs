@@ -22,14 +22,22 @@ namespace EndPoint_Ui.Middlewares
         public async Task InvokeAsync(HttpContext httpContext, IUserService userService)
         {
 
+
             string Ip = string.Empty;
+
+            //string Ip=string.Empty;
+
             string? UserAgent = httpContext.Request.Headers["User-Agent"];
 
 
             if (httpContext!.Connection.RemoteIpAddress != null)
             {
 
+
                 Ip = httpContext!.Connection.RemoteIpAddress.ToString();
+
+             Ip = httpContext!.Connection.RemoteIpAddress.ToString();
+
             }
             string? UserInformation = httpContext.User.FindFirst("id")?.Value;
             Stopwatch sw = Stopwatch.StartNew();
@@ -45,7 +53,7 @@ namespace EndPoint_Ui.Middlewares
                 UserAgent = UserAgent,
                 Ip = Ip,
                 UserInformation = UserInformation,
-                Statuscode = Statuscode,
+                Statuscode = Statuscode
 
             });
         }
