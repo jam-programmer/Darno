@@ -1,30 +1,30 @@
 using System;
 using Application;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 using Application.Services.User;
-=======
+//=======
 
->>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 using EndPoint_Ui.Middlewares;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Scrutor;
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 
->>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Scrutor;
 using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
-<<<<<<< HEAD
-<<<<<<< HEAD
+//<<<<<<< HEAD
+//<<<<<<< HEAD
 
-=======
->>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
-=======
+//=======
+//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+//=======
 //using EndPoint_Ui.Areas.Admin.Pages.Articles;
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
+//>>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -69,10 +69,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-<<<<<<< HEAD
-IndexModel index = new IndexModel();
-index.OnGet();
-=======
+//<<<<<<< HEAD
+//IndexModel index = new IndexModel();
+//index.OnGet();
+//=======
 
->>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
+//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 app.Run();

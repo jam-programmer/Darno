@@ -1,51 +1,39 @@
 using Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.IO;
 
 namespace EndPoint_Ui.Areas.Admin.Pages.Dashboard;
 
 [Authorize]
 public class IndexModel : PageModel
 {
-
-   
-
-
     public List<DriveInformationViewModel> Informations = [];
+
     public void OnGet()
     {
-        DriveInfo[] allDrives = DriveInfo.GetDrives();
-        if (allDrives is not null && allDrives.Any())
+        foreach (DriveInfo d in DriveInfo.GetDrives())
         {
-            foreach (DriveInfo d in allDrives)
+            if (!d.IsReady)
+                continue;
+
+            try
             {
-
-                Informations.Add(new DriveInformationViewModel()
+                Informations.Add(new DriveInformationViewModel
                 {
-                    Name = d?.Name,
-                    DriveType = d?.DriveType.ToString(),
-                    VolumeLabel = d?.VolumeLabel,
-                    DriveFormat = d?.DriveFormat,
-                    AvailableFreeSpace = d?.AvailableFreeSpace.ToString(),
-                    TotalFreeSpace = d?.TotalFreeSpace.ToString(),
-
-                    TotalSize = d?.TotalSize.ToString()
+                    Name = d.Name,
+                    DriveType = d.DriveType.ToString(),
+                    VolumeLabel = d.VolumeLabel,
+                    DriveFormat = d.DriveFormat,
+                    AvailableFreeSpace = d.AvailableFreeSpace.ToString(),
+                    TotalFreeSpace = d.TotalFreeSpace.ToString(),
+                    TotalSize = d.TotalSize.ToString()
                 });
-
-
-
-
             }
-
-
+            catch (IOException)
+            {
+                continue;
+            }
         }
-<<<<<<< HEAD
-=======
-        
->>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
     }
-
 }
-
-
-

@@ -8,39 +8,46 @@ using System.Threading.Tasks;
 namespace EndPoint_Ui.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
-    public class UserInformationMiddleware 
+    public class UserInformationMiddleware
     {
 
         private readonly RequestDelegate _next;
-        private readonly IUserService _userService;
 
-        public UserInformationMiddleware(RequestDelegate next, IUserService userService)
+        public UserInformationMiddleware(RequestDelegate next)
         {
             _next = next;
-            _userService = userService;
         }
 
 
-        public async Task InvokeAsync(HttpContext httpContext)
+        public async Task InvokeAsync(HttpContext httpContext, IUserService userService)
         {
+
+            string Ip = string.Empty;
             string? UserAgent = httpContext.Request.Headers["User-Agent"];
-            string Ip = httpContext.Connection.RemoteIpAddress.ToString();
+
+
+            if (httpContext!.Connection.RemoteIpAddress != null)
+            {
+
+                Ip = httpContext!.Connection.RemoteIpAddress.ToString();
+            }
             string? UserInformation = httpContext.User.FindFirst("id")?.Value;
             Stopwatch sw = Stopwatch.StartNew();
-            
+
             await _next(httpContext);
 
             sw.Stop();
             int Statuscode = httpContext.Response.StatusCode;
             TimeSpan Duration = sw.Elapsed;
 
-            await _userService.SaveUserInformation(new UserInformationDto {
+            await userService.SaveUserInformation(new UserInformationDto
+            {
                 UserAgent = UserAgent,
                 Ip = Ip,
                 UserInformation = UserInformation,
                 Statuscode = Statuscode,
-             
-            }  );
+
+            });
         }
     }
 
