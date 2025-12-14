@@ -25,11 +25,13 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <a asp-page="/Service/Detail" asp-route-UniqueName="@service.UniqueName">
                         <div class="services-single text-center p-5 my-md-3 my-lg-3 my-sm-0 shadow-sm white-bg rounded">
-                            
-                               
-                            <img src="~/gallery/Service/@service.ImagePath" >
+
+
+                                <img class="icon-service" src="~/gallery/Service/@service.ImagePath">
                             <h5 class="mt-3">@service.Title</h5>
-                            <p class="mb-0">به تدریج با مشارکت در سطح بندی منابع ، تجارت را در خارج از صندوق توانمند می کند.</p>
+                            <p class="mb-0">
+                                @service.ShortDescription
+                            </p>
                             <span class="detail-link mt-4">بیشتر بخوانید <span class="ti-arrow-left"></span></span>
 
                             </div>
