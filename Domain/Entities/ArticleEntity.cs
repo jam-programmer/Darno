@@ -4,9 +4,9 @@ namespace Domain.Entities
 {
     public class ArticleEntity : BaseEntity, IDelete
     {
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public DateTime PublishDate { get; set; }
 

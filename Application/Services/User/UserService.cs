@@ -6,6 +6,7 @@ using Application.Contract;
 using Application.DataTransferObject;
 using Application.ViewModels;
 using Azure.Core;
+using Domain.Entities;
 using Domain.Entities.Identity;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
@@ -289,7 +290,18 @@ public class UserService : IUserService
 
     public async Task SaveUserInformation(UserInformationDto dto)
     {
-        await Task.CompletedTask;
+        var UserInformation = new UserInformationEntity();
+         UserInformation.UserAgent = dto.UserAgent ;
+        UserInformation.Id = Guid.NewGuid();
+        UserInformation.Ip = dto.Ip;
+        UserInformation.UserInformation = dto.UserInformation;
+        UserInformation.Statuscode = dto.Statuscode;
+        UserInformation.Duration = dto.Duration;
+
+        _context.Entity<UserInformationEntity>().Add(UserInformation);
+
+        await _context.SaveChangesAsync();
+
     }
 
 

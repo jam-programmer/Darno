@@ -20,7 +20,6 @@ internal sealed class UserInformationMap : IEntityTypeConfiguration<UserInformat
         builder.Property(u => u.Statuscode);
         builder.Property(u => u.Duration);
 
-
     }
 
 }

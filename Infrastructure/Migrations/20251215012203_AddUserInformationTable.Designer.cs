@@ -4,6 +4,7 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    partial class SqlServerContextModelSnapshot : ModelSnapshot
+    [Migration("20251215012203_AddUserInformationTable")]
+    partial class AddUserInformationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,13 +66,7 @@ namespace Infrastructure.Migrations
                     b.ToTable("Article", (string)null);
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("Domain.Entities.CategoryArticleEntity", b =>
-               //(Add Article & Category modules (entities, DTOs, viewmodels, migrations))
-
-=======
             modelBuilder.Entity("Domain.Entities.BlogCategoryEntity", b =>
->>>>>>> 228afe7 (Add migration and related updates)
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,12 +74,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                b.Property<string>("UrlName");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
