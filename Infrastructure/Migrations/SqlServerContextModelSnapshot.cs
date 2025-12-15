@@ -65,6 +65,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.CategoryArticleEntity", b =>
                //(Add Article & Category modules (entities, DTOs, viewmodels, migrations))
+
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,6 +79,11 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                 b.Property<string>("UrlName");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrlName");
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 

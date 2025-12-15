@@ -20,12 +20,11 @@ namespace EndPoint_Ui.Middlewares
 
 
         public async Task InvokeAsync(HttpContext httpContext, IUserService userService)
-        {
 
+        {
 
             string Ip = string.Empty;
 
-            //string Ip=string.Empty;
 
             string? UserAgent = httpContext.Request.Headers["User-Agent"];
 
@@ -50,6 +49,7 @@ namespace EndPoint_Ui.Middlewares
 
             await userService.SaveUserInformation(new UserInformationDto
             {
+
                 UserAgent = UserAgent,
                 Ip = Ip,
                 UserInformation = UserInformation,

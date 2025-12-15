@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Domain.Entities 
 {
-    public class UserInformationEntity
-    { 
+    public class UserInformationEntity : BaseEntity
+    {
         public string? UserAgent { get; set; }
         public string? Ip { get; set; }
         public string? UserInformation { get; set; }
         public int Statuscode { get; set; }
         public int Duration { get; set; }
-    
-}
+
+    }
 }
