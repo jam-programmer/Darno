@@ -1,36 +1,18 @@
 using Application;
-//<<<<<<< HEAD
-using Application.Services.User;
-//=======
-
-//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 using Application.Services.User;
 using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
-
 using EndPoint_Ui.Middlewares;
 using Infrastructure;
 using Scrutor;
-
-//<<<<<<< HEAD
-//=======
-
-//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
-using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Scrutor;
-using EndPoint_Ui.Areas.Admin.Pages.Dashboard;
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-
-//=======
-//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
-//=======
+using Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 //using EndPoint_Ui.Areas.Admin.Pages.Articles;
-//>>>>>>> f8a2519 (Add Article & Category modules (entities, DTOs, viewmodels, migrations))
 
 
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 
@@ -76,12 +58,8 @@ app.UseUserInformationMiddleware();
 
 app.MapRazorPages();
 
-//<<<<<<< HEAD
 //IndexModel index = new IndexModel();
 //index.OnGet();
-//=======
-
-//>>>>>>> ca465ceb95eddb03965830ce5a3f6cd36ba66f94
 
 IndexModel index = new IndexModel();
 index.OnGet();
