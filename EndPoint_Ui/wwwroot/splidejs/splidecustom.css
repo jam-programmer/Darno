@@ -1,0 +1,110 @@
+﻿/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container اصلی */
+.splide {
+    width: 100%;
+    height: 70vh; /* ارتفاع پیش‌فرض دسکتاپ */
+    position: relative;
+    background: #000; /* پس‌زمینه مشکی برای کنتراست بهتر */
+}
+
+/* Track */
+.splide__track {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* List */
+.splide__list {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* هر اسلاید */
+.splide__slide {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    overflow: hidden;
+}
+
+    /* تصاویر داخل اسلاید */
+    .splide__slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+/* حالت عمودی */
+.splide--ttb .splide__track {
+    display: flex;
+    flex-direction: column;
+}
+
+.splide--ttb .splide__list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* صفحه‌بندی */
+.splide__pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.splide__pagination__page {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .splide__pagination__page.is-active {
+        background: #fff;
+        transform: scale(1.2);
+    }
+
+/* رسپانسیو */
+@media (max-width: 768px) {
+    .splide {
+        height: 50vh !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .splide {
+        height: 40vh !important;
+    }
+
+    .splide__pagination {
+        bottom: 10px;
+    }
+
+    .splide__pagination__page {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* استایل دیباگ برای دیدن المان‌ها */
+.debug * {
+    /* border: 1px solid rgba(255, 0, 0, 0.3) !important; */
+}

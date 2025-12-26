@@ -3,34 +3,31 @@
 @{
     ViewData["Title"] = "Home page";
 }
-<section class="py-5 gradient-bg">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6">
-                <div class="hero-slider-content text-white pt-5 mt-5">
-                    <strong>
-                        ما ایده های شما را به واقعیت تبدیل میکنیم
-                    </strong>
-                    <h1 class="text-white">
-                        به گروه فنی و مهندسی دارنو خوش آمدید
-                    </h1>
-                    <p class="lead" style="text-align: justify;">
-                        گروه فنی و مهندسی دارنو با ارائه راه‌حل‌های جامع در حوزه مهندسی نرم‌افزار، نامی مطمئن برای تحقق اهداف دیجیتال کسب‌وکار شماست. ما با تلفیق تخصص فنی و خلاقیت، نرم‌افزارهای قدرتمند و تأثیرگذاری خلق می‌کنیم که تجربه‌ای قابل اعتماد برای مشتریان شما می‌سازد و موفقیت پایدارتان را تضمین می‌نماید.
-                    </p>
 
-                    <div class="mt-3">
-                        <a asp-page="/Order" class="btn order-btn">سفارش طراحی سایت اختصاصی</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6">
-                <div class="pt-5 ms-3">
-                    <img src="~/img/WEBDESIGNDARNO.png" class="img-fluid custom-width" alt="طراحی سایت اختصاصی">
-                </div>
-            </div>
-        </div>
+<section class="splide" aria-label="اسلایدر تصاویر">
+    <div class="splide__track">
+        <ul class="splide__list">
+            <li class="splide__slide">
+                <img src="~/images/100.png" alt="تصویر 1" />
+            </li>
+            <li class="splide__slide">
+                <img src="~/images/200.jpg" alt="تصویر 2" />
+            </li>
+            <!-- می‌توانید اسلایدهای بیشتری اضافه کنید -->
+        </ul>
     </div>
 </section>
+       
 @await Component.InvokeAsync("ServiceComponent")
 @await Component.InvokeAsync("MembrsComponenets")
 @await Component.InvokeAsync("QuestionComponent")
+
+@section Style {
+    <link href="~/splidejs/splide.min.css" rel="stylesheet"/>
+    <link href="~/splidejs/splidecustom.css" rel="stylesheet"/>
+}
+@section Script {
+    <script src="~/splidejs/splide.min.js"></script>
+    <script src="~/splidejs/splidecustom.js"></script>
+   
+ }
