@@ -34,12 +34,12 @@ namespace EndPoint_Ui.Middlewares
             {
 
 
-                Ip = httpContext!.Connection.RemoteIpAddress.ToString();
+                Ip = httpContext!.Connection?.RemoteIpAddress?.ToString() ?? "Unknown";
 
              Ip = httpContext!.Connection.RemoteIpAddress.ToString();
 
             }
-            string? UserInformation = httpContext.User.FindFirst("id")?.Value;
+            string? UserInformation = httpContext.User?.FindFirst("id")?.Value;
             Stopwatch sw = Stopwatch.StartNew();
 
             await _next(httpContext);

@@ -1,10 +1,20 @@
 ﻿@page
 @model EndPoint_Ui.Areas.Admin.Pages.Order.IndexModel
-
+@using Application.Common.Extension
 
 @section Script {
     <script src="~/js/pagination.js"></script>
-    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('button[data-order-id]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    var id = this.getAttribute('data-order-id');
+                    window.location.href = '/Admin/Order/Details?id=' + id;
+                });
+            });
+        });
+    </script>
 }
 
 @{
@@ -32,7 +42,6 @@
 <div class="row">
     <navigation routes="@routes"></navigation>
     @Html.AntiForgeryToken()
-
 </div>
 
 <basic-table table-title="لیست سفارشات"
@@ -47,27 +56,29 @@
         <thead>
             <tr>
                 <th>نام مشتری</th>
+               
+           
                 <th>عنوان پروژه</th>
                 <th>نوع پروژه</th>
-                
+                <th>جزئیات</th>
             </tr>
         </thead>
         <tbody>
-
             @foreach (var item in Model.PageModel.List)
             {
                 <tr>
                     <td>@item.FullName</td>
+                    
+
                     <td>@item.Title</td>
-                    <td>@item.ProjectType</td>
-                 
+                    <td>@item.ProjectType.GetEnumName()</td>
+                    <td>
+                        <button class="btn btn-primary" data-order-id="@item.Id">
+                            مشاهده جزئیات
+                        </button>
+                    </td>
                 </tr>
             }
-
-
         </tbody>
     </table>
-
-
 </basic-table>
-
