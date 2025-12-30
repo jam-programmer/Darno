@@ -14,7 +14,8 @@ public interface IOrderService
     Task InsertOrderAsync(OrderDto order);
 
     Task<PaginatedList<OrderViewModel>> GetOrdersAsync(Pagination pagination);
+    Task<OrderDetailsViewModel?> GetOrderDetailsAsync(Guid orderId);
 
-   
+
 }
 

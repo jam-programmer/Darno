@@ -7,9 +7,10 @@ using Domain.Enums;
 
 namespace Application.ViewModels
 {
-   public class OrderViewModel
+    public  record OrderViewModel
     {
        
+        public Guid Id { set; get; }
 
         public string? FullName { set; get; }
         public string? Title { set; get; }

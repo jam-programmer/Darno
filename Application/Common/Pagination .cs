@@ -1,4 +1,4 @@
-﻿using Application.Contract;
+﻿ using Application.Contract;
 namespace Application.Common;
 
 public partial class Pagination : IPagination

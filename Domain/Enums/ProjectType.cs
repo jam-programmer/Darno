@@ -10,7 +10,7 @@ namespace Domain.Enums;
 
 public enum ProjectType
 {
-    [Display(Name ="سایت شرکتی")]
+    [DisplayAttribute(Name ="سایت شرکتی")]
     CorporateSite,
     [Display(Name = "سایت فروشگاهی")]
     ShoppingSite,
