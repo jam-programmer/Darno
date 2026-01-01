@@ -8,6 +8,7 @@ public partial class Pagination : IPagination
     public string keyword { set; get; } = string.Empty;
 
 }
+
 public partial class PaginationWithParent : IPagination
 {
     public int currentPage { set; get; } = 1;
