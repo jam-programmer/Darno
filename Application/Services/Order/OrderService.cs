@@ -37,8 +37,12 @@ public class OrderService : IOrderService
         PaginatedList<OrderViewModel> model = new();
         if (!string.IsNullOrEmpty(pagination!.keyword))
         {
-            query = query.Where(w => w.Title!.Contains(pagination!.keyword));
+            query = query.Where(w =>
+                (w.Title!.Contains(pagination.keyword)) ||
+                ( w.FullName!.Contains(pagination.keyword))
+            );
         }
+
 
         int count = query.Count().PageCount(pagination!.pageSize);
         int total = query.Count();

@@ -18,6 +18,7 @@ public class IndexModel (IOrderService orderService) : PageModel
     {
         PageModel = await _orderService.GetOrdersAsync(pagination);
         ViewData["Search"] = pagination.keyword;
+      //  ViewData["CustomerSearch"]= pagination.keyword;
     }
 
 
