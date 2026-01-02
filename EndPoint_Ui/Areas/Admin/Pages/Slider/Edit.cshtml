@@ -1,0 +1,123 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Slider.EditModel
+
+@section Style {
+
+    <link rel="stylesheet" href="~/assets/vendor/libs/flatpickr/flatpickr.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
+    <link rel="stylesheet" href="~/assets/vendor/libs/pickr/pickr-themes.css">
+
+}
+
+@section Script {
+    <script src="~/assets/js/upload.js"></script>
+    <script src="~/assets/js/slider/create.js"></script>
+
+    <script src="~/assets/vendor/libs/jdate/jdate.js"></script>
+    <script src="~/assets/vendor/libs/flatpickr/flatpickr-jdate.js"></script>
+    <script src="~/assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
+    <script src="~/assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="~/assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+    <script src="~/assets/vendor/libs/pickr/pickr.js"></script>
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Slider",
+            actionName = "Index",
+            title = "اسلایدر",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Slider",
+            actionName = "Edit",
+            title = "ویرایش تصویر",
+            IsActive = false
+        }
+
+    };
+}
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    <form asp-page="Edit" method="post" enctype="multipart/form-data"
+          class="col-xl-8 col-lg-8 col-md-12 col-sm offset-xl-2 offset-lg-2 card">
+        <div class="card-header">
+            <h4>ویرایش تصویر </h4>
+            @if (ViewData["Alert"] is not null)
+            {
+                <div class="alert alert-warning">@ViewData["Alert"]</div>
+            }
+        </div>
+        <div class="card-body">
+            <div class="col-4">
+                @if (Model.Slider.ImagePath == "default.jpg")
+                {
+                    <img id="imagePath_1" width="100" height="80" 
+                        src="~/Gallery/default.jpg" />
+
+                }
+                else
+                {
+                    <img id="imagePath_1" width="100" height="80" 
+                        src="~/Gallery/slider/@Model.Slider.ImagePath" />
+
+                }
+                <br />
+                <label class="form-label">تصویر</label>
+                <input asp-for="Slider.ImageFile"
+                       onchange="ChangeImage(this,1)" class="form-control" type="file" />
+                <span class="text-danger" asp-validation-for="Slider.ImageFile"></span>
+            </div>
+            <div>
+                <label class="form-label">عنوان</label>
+                <input type="text" asp-for="Slider.Title" class="form-control" />
+                <span class="text-danger" asp-validation-for="Slider.Title"></span>
+            </div>
+            <div>
+                <label class="form-label">لینک</label>
+                <input type="text" asp-for="Slider.Link" class="form-control" />
+                <span class="text-danger" asp-validation-for="Slider.Link"></span>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label class="form-label">تاریخ شروع نمایش</label>
+                    <input type="hidden" asp-for="Slider.StartShow" class="form-control"
+                           placeholder="YYYY/MM/DD" id="start">
+                    <span class="text-danger" asp-validation-for="Slider.StartShow"></span>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">تاریخ پایان نمایش</label>
+                    <input type="hidden" placeholder="YYYY/MM/DD" id="end" asp-for="Slider.EndShow" class="form-control" />
+                    <span class="text-danger" asp-validation-for="Slider.EndShow"></span>
+                </div>
+            </div>
+            <input type="hidden" asp-for="Slider.Id"/>
+            <input type="hidden" asp-for="Slider.ImagePath"/>
+
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-sm btn-success text-white" type="submit">ثبت</button>
+            <a asp-page="/Slider/Index" class="btn btn-sm btn-warning text-white">بازگشت</a>
+        </div>
+    </form>
+
+</div>
+

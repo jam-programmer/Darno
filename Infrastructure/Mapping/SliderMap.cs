@@ -13,7 +13,8 @@ namespace Infrastructure.Mapping
     {
         public void Configure(EntityTypeBuilder<SliderEntity> builder)
         {
-            builder.ToTable("Sliders");
+            builder.HasQueryFilter(f=>f.IsDelete==false);
+            builder.ToTable("Slider");
             builder.HasKey(S => S.Id);
             builder.Property(S => S.ImagePath).IsRequired().HasMaxLength(1000);
             builder.Property(S => S.Link).IsRequired().HasMaxLength(500);

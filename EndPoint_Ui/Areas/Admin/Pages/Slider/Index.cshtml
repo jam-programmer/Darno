@@ -1,0 +1,89 @@
+﻿@page
+@model EndPoint_Ui.Areas.Admin.Pages.Slider.IndexModel
+
+
+
+
+@section Script {
+    <script src="~/js/pagination.js"></script>
+    <script src="~/assets/js/slider/index.js"></script>
+}
+@{
+    var routes = new List<NavigationRouteModel>
+    {
+        new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Dashboard",
+            actionName = "Index",
+            title = "پیشخوان",
+            IsActive = false
+        },
+         new NavigationRouteModel
+        {
+            areaName = "Admin",
+            pageName = "Question",
+            actionName = "Index",
+            title = "اسلایدر",
+            IsActive = true
+        }
+
+    };
+}
+<div class="row">
+    <navigation routes="@routes"></navigation>
+    @Html.AntiForgeryToken()
+
+</div>
+
+
+<basic-table table-title="لیست تصاویر"
+             button-title="ایجاد تصویر"
+             button-link="/Admin/Slider/Create"
+             area="Admin"
+             page="Slider"
+             action="Index"
+             search-value="@ViewData["Search"]"
+             total-pages="@Model.PageModel.TotalPage"
+             current-page="@Model.PageModel.CurrentPage">
+
+    <!-- محتوای جدول اینجا قرار می‌گیرد -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>تصویر </th>
+                <th>عنوان </th>
+                <th>لینک </th>
+                <th>تاریخ شروع نمایش </th>
+                <th>تاریخ پایان نمایش </th>
+
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.PageModel!.List!)
+            {
+                <tr id="item_@item.Id">
+                    <td>
+                        <img src="~/gallery/slider/@item.ImagePath"
+                             width="60" height="80"
+                             class="img-fluid" />
+                    </td>
+                    <td>@item.Title</td>
+                    <td>@item.Link</td>
+                    <td>@item.StartShow</td>
+                    <td>@item.EndShow</td>
+                 
+                    <td>
+                        <a asp-area="Admin" asp-page="/Slider/Edit" asp-route-id="@item.Id"
+                           class="btn btn-sm btn-warning">
+                            ویرایش
+                        </a>
+                        <a onclick="Delete('@item.Id')" class="btn btn-sm btn-danger text-white">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</basic-table>

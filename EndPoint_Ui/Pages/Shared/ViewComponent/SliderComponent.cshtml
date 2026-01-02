@@ -1,0 +1,22 @@
+﻿@using Application.ViewModels
+@model IReadOnlyList<SliderViewModel>
+
+
+<section class="splide" aria-label="اسلایدر تصاویر">
+    <div class="splide__track">
+        <ul class="splide__list">
+            @if(Model!=null &&Model.Any())
+            {
+                @foreach(var item in Model)
+                {
+                    <li class="splide__slide">
+                        <a href="@item.Link">
+
+                            <img src="~/gallery/Slider/@item.ImagePath" alt="@item.Title" />
+                        </a>
+                    </li>
+                }
+            }            
+        </ul>
+    </div>
+</section>

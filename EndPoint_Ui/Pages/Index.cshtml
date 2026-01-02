@@ -4,22 +4,9 @@
     ViewData["Title"] = "Home page";
 }
 
-<section class="splide" aria-label="اسلایدر تصاویر">
-    <div class="splide__track">
-        <ul class="splide__list">
-            <li class="splide__slide">
-                <img src="~/images/100.png" alt="تصویر 1" />
-            </li>
-            <li class="splide__slide">
-                <img src="~/images/200.jpg" alt="تصویر 2" />
-            </li>
-            <!-- می‌توانید اسلایدهای بیشتری اضافه کنید -->
-        </ul>
-    </div>
-</section>
-       
+@await Component.InvokeAsync("SliderComponent")
 @await Component.InvokeAsync("ServiceComponent")
-@await Component.InvokeAsync("MembrsComponenets")
+@await Component.InvokeAsync("MembrsComponenet")
 @await Component.InvokeAsync("QuestionComponent")
 
 @section Style {
