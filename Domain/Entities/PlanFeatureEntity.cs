@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class PlanFeatureEntity :BaseEntity
+    public class PlanFeatureEntity :BaseEntity, IDelete
     {
         public string? Name { get; set; }
         public bool IsActive { get; set; }
 
         public Guid PricingPlanId { get; set; }
         public PricingPlanEntity? PricingPlan { get; set; }
+        public bool IsDelete { get; set; } = false;
     }
 }
 
