@@ -5,16 +5,7 @@
 @section Script {
     <script src="~/js/pagination.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('button[data-order-id]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    var id = this.getAttribute('data-order-id');
-                    window.location.href = '/Admin/Order/Details?id=' + id;
-                });
-            });
-        });
-    </script>
+   
 }
 
 @{
@@ -66,6 +57,8 @@
            
                 <th>عنوان پروژه</th>
                 <th>نوع پروژه</th>
+                <th>تاریخ ثبت</th>
+
                 <th>جزئیات</th>
             </tr>
         </thead>
@@ -78,10 +71,14 @@
 
                     <td>@item.Title</td>
                     <td>@item.ProjectType.GetEnumName()</td>
+                    <td>@item.CreatedAt.PersianDateWithOutTime()</td>
+
                     <td>
-                        <button class="btn btn-primary" data-order-id="@item.Id">
+                        <a asp-page="/Order/Details"
+                           asp-route-id="@item.Id"
+                           class="btn btn-sm btn-warning text-white">
                             مشاهده جزئیات
-                        </button>
+                        </a>
                     </td>
                 </tr>
             }

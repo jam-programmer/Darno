@@ -116,6 +116,8 @@ public static class Time
     }
     public static string PersianDateWithOutTime(this DateTime time)
     {
+        
+
         PersianCalendar persianCalendar = new PersianCalendar();
         int year = persianCalendar.GetYear(time);
         int month = persianCalendar.GetMonth(time);

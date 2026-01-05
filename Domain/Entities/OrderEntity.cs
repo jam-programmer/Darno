@@ -1,5 +1,4 @@
 ﻿using Domain.Enums;
-
 namespace Domain.Entities;
 
 public class OrderEntity : BaseEntity, IDelete
@@ -24,4 +23,6 @@ public class OrderEntity : BaseEntity, IDelete
     public string? Description { set; get; }
     public string? File { set; get; }
     public bool IsDelete { get; set; } = false;
+
+    public DateTime CreatedAt { get; set; }
 }

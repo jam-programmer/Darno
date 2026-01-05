@@ -8,20 +8,25 @@ using Domain.Enums;
 using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using static Dapper.SqlMapper;
 
 
 namespace Application.Services.Order;
 
 public class OrderService : IOrderService
 {
+  
+   
     readonly IContext _context;
     public OrderService(IContext context)
     {
         _context = context;
     }
     public async Task InsertOrderAsync(OrderDto order)
-    {
+    {   
         OrderEntity entity = order.Adapt<OrderEntity>();
+        entity.CreatedAt = DateTime.Now;
+         
         if (order.File is not null)
         {
             entity.File = await order.File.UploadFileAsync("Order");
@@ -31,10 +36,12 @@ public class OrderService : IOrderService
     }
 
    public async Task<PaginatedList<OrderViewModel>> GetOrdersAsync(Pagination pagination)
-
     {
+
+    
+
         IQueryable<OrderEntity> query = _context.GetQueryable<OrderEntity>();
-        PaginatedList<OrderViewModel> model = new();
+       
         if (!string.IsNullOrEmpty(pagination!.keyword))
         {
             query = query.Where(w =>
@@ -46,13 +53,14 @@ public class OrderService : IOrderService
 
         int count = query.Count().PageCount(pagination!.pageSize);
         int total = query.Count();
-        var list = await query
+        var list = await query.OrderByDescending(d => d.CreatedAt)
 
         .Select(o => new OrderViewModel
         {    Id=o.Id,
             FullName = o.FullName,
             Title = o.Title,
-            ProjectType = o.ProjectType
+            ProjectType = o.ProjectType,
+            CreatedAt=o.CreatedAt
         })
         .ToListAsync();
 
