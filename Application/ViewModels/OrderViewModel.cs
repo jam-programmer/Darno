@@ -17,6 +17,8 @@ namespace Application.ViewModels
 
         public ProjectType ProjectType { set; get; }
 
-        
+        public DateTime CreatedAt { get; set; }
+
+
     }
 }
