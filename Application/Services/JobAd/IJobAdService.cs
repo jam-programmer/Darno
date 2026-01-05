@@ -22,4 +22,3 @@ namespace Application.Services.JobAd
 }
 
 
-//Task GetJobAdByIdAsync(Guid dto);
