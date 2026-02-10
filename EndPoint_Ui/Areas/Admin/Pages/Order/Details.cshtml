@@ -3,69 +3,81 @@
 @model EndPoint_Ui.Areas.Admin.Pages.Order.Details;
 @using Application.Common.Extension
 
-<table class="table table-striped table-bordered table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>نام مشتری</th>
-            <th>عنوان پروژه</th>
-            <th>نوع پروژه</th>
-            <th>شماره تلفن</th>
-            <th>نوع پلتفرم</th>
-            <th>توضیحات</th>
-            <th>ایمیل</th>
-            <th>چندزبانه</th>
-            <th>ارسال پیامک</th>
-            <th>چت آنلاین</th>
-            <th>بلاگ</th>
-            <th>گزارش‌دهی</th>
-            <th>قیمت (تومان/ریال)</th>
-            <th>اپلیکیشن PWA</th>
-            <th>میزبان (هاست) دارد</th>
-            <th>دامنه دارد</th>
-            <th>آدرس سایت</th>
-            <th>فایل ضمیمه</th>
-
-
-
-
-        </tr>
-    </thead>
-    <tbody>
-
-      
+<div class="card">
+    <table class="table table-hover">
+        <tbody>
             <tr>
-            
-
+                <th class="table-light">نام مشتری</th>
                 <td>@Model.Order.FullName</td>
-            <td>@Model.Order.Title</td>
-            <td>@Model.Order.ProjectType.GetEnumName()</td>
-            <td>@Model.Order.PhoneNumber</td>
-            <td>@Model.Order.PlatformType.GetEnumName()</td>
-            <td>@Model.Order.Description</td>
-            <td>@Model.Order.Email</td>
-            <td>@Model.Order.IsOnlinePaymentGateway.GetEnumName()</td>
-            <td>@Model.Order.IsMultilingual.GetEnumName()</td>
-            <td>@Model.Order.IsSms.GetEnumName()</td>
-            <td>@Model.Order.IsBlog.GetEnumName()</td>
-            <td>@Model.Order.IsReport.GetEnumName()</td>
-            <td>@Model.Order.Price</td>
-            <td>@Model.Order.IsPwa.GetEnumName()</td>
-            <td>@Model.Order.HaveHost.GetEnumName()</td>
-            <td>@Model.Order.HaveDomain.GetEnumName()</td>
-            <td>@Model.Order.Url</td>
-            <td>@Model.Order.File</td>
-
-
-
-
-
-
             </tr>
-
-
-        
-   
-       
-        
-    </tbody>
-</table>
+            <tr>
+                <th class ="table-light">عنوان پروژه</th>
+                <td>@Model.Order.Title</td>
+            </tr>
+            <tr>
+                <th class="table-light">نوع پروژه</th>
+                <td>@Model.Order.ProjectType.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">شماره تلفن</th>
+                <td>@Model.Order.PhoneNumber</td>
+            </tr>
+            <tr>
+                <th class="table-light">نوع پلتفرم</th>
+                <td>@Model.Order.PlatformType.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">توضیحات</th>
+                <td>@Model.Order.Description</td>
+            </tr>
+            <tr>
+                <th class="table-light">ایمیل</th>
+                <td>@Model.Order.Email</td>
+            </tr>
+            <tr>
+                <th class="table-light">چندزبانه</th>
+                <td>@Model.Order.IsMultilingual.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">ارسال پیامک</th>
+                <td>@Model.Order.IsSms.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">چت آنلاین</th>
+                <td>@Model.Order.IsOnlinePaymentGateway.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">بلاگ</th>
+                <td>@Model.Order.IsBlog.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">گزارش‌دهی</th>
+                <td>@Model.Order.IsReport.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">قیمت (تومان/ریال)</th>
+                <td>@Model.Order.Price</td>
+            </tr>
+            <tr>
+                <th class="table-light">اپلیکیشن PWA</th>
+                <td>@Model.Order.IsPwa.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">میزبان (هاست) دارد</th>
+                <td>@Model.Order.HaveHost.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">دامنه دارد</th>
+                <td>@Model.Order.HaveDomain.GetEnumName()</td>
+            </tr>
+            <tr>
+                <th class="table-light">آدرس سایت</th>
+                <td>@Model.Order.Url</td>
+            </tr>
+            <tr>
+                <th class="table-light">فایل ضمیمه</th>
+                <td>@Model.Order.File</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
