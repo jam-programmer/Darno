@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
+
     [DbContext(typeof(SqlServerContext))]
     [Migration("20260211002430_AddCourse")]
     partial class AddCourse
